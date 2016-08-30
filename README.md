@@ -1,10 +1,14 @@
 # Java Development with VSTS Hands on Labs
 
+![](images/all_logo.png)
+
 These hands on labs allow you to explore how VSTS works in a Linux environment with [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx), [Eclipse](https://eclipse.org/downloads/) and [Team Explorer Everywhere](https://www.visualstudio.com/en-us/products/team-explorer-everywhere-vs.aspx). This combination of tools and technologies allows you to leverage the Microsoft DevOps platform for Java development. 
 
 The [labs](labs/readme.md) use a pre-built virtual machine image that is preconfigured with all the software you require to run through the labs.  To use the labs, you will run a copy of this image in your own Azure subscription.
 
 Instead of manually creating the resources in Azure, you are going to use Azure Resource Management (ARM) templates.
+
+If you require assistance with these labs, contact Northwest Cadence through our [website](http://nwcadence.com).
 
 **Tasks**
 
