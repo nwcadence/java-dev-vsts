@@ -49,6 +49,6 @@ The image and the accompanying hand-on-labs is for technical audience. As such, 
 Acquiring the VSTS for Java Linux VM 2016
 -----------------------------------------
 
-Follow [the instructions](..\readme.md) to create the VM in Azure.
+Follow [the instructions](..\README.md) to create the VM in Azure.
 
 You are now ready to start using the VM!
