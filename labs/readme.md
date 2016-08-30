@@ -49,10 +49,6 @@ The image and the accompanying hand-on-labs is for technical audience. As such, 
 Acquiring the VSTS for Java Linux VM 2016
 -----------------------------------------
 
-In order to run on Azure, you will need to add the VHD to your Azure storage and use it as an image and create VM based on the image:
+Follow [the instructions](..\readme.md) to create the VM in Azure.
 
-
-
-
-
-You are now ready to start using the VM!!!
+You are now ready to start using the VM!
