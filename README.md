@@ -112,3 +112,6 @@ Follow these steps to change the password for the `vmadmin` user:
 1. Enter the current password (`P2ssw0rd`)
 1. Enter a new password
 1. Confirm the new password
+
+## Start the Labs
+We've recorded some short videos that intro each lab. Check out this [playlist on YouTube](https://youtu.be/O1UTj-wZr3k?list=PLu1D89Nlvq9hUaf-wdBXVcKfQiqY7Y0AI).

@@ -27,20 +27,41 @@ The virtual machine contains the following pre-configured software:
 
 A set of hands-on-lab documents, which also function as demo scripts, are available for download along with this virtual machine. There are 11 exercises in this walkthrough:
 
-1. <a href="./1.Setting up a new project on VSTS.md">Creating Your Visual Studio Team Services Account and Team Project</a>
-2. <a href="./2.Managing Backlog.md">Managing Your Backlog</a>
-3. <a href="./3.Working with Git.md">Working with Git</a>
-4. <a href="./4.Running builds, Unit Tests and Code Coverage.md">Building your application, running unit tests and code coverage</a>
-5. <a href="./5.Working with Team Explorer Everywhere.md">Working with Team Explorer Everywhere</a>
-6. <a href="./6.Setting up local build agents.md">Setting up Build and Release Agent on Linux</a>
-7. <a href="./7.Branches, Pull Requests and CI.md">Collaborating on code changes with Pull Requests</a>
-8. <a href="./8.Automating Deployments with Release Management.md">Using Release Management to deploy your application to Tomcat</a>
-9. <a href="./9.Running Selenium Tests.md">Running Automated UI Test with Selenium</a>
-10. <a href="./10.DeploytoAzure.md">Deploying to Azure</a>
-11. <a href="./11. Application Insights.md">Monitoring with Application Insights</a>
+1.	<a href="./1.Setting up a new project on VSTS.md">Module 1: Setting up a new project on VSTS</a> 
+    - This module walks you through setting up a VSTS account and Team Project for the rest of the Hands on Labs.
+    - Watch the [video overview](https://youtu.be/O1UTj-wZr3k)
+2.	<a href="./2.Managing Backlog.md">Module 2: Managing Your Team Project Backlog</a>
+    - In this exercise, you are going to examine the various portfolio planning features of Visual Studio to group and manage your work and that of your team using backlogs.
+    - Watch the [video overview](https://youtu.be/x4csUGcF4LI)
+3.	<a href="./3.Working with Git.md">Module 3: Working with Git</a>
+    - In this exercise, you are going to learn how to put some existing code into your Team Project.
+    - Watch the [video overview](https://youtu.be/rRlgS1cOcMI)
+4.	<a href="./4.Running builds, Unit Tests and Code Coverage.md">Module 4: Running builds, Unit Tests and Code Coverage</a> 
+    - In this exercise, you will learn how to create a Team Build that runs in Visual Studio Team Services. This makes it quick and easy to start building your code, either manually or in an automated fashion, without having to worry about any build server configuration.
+    - Watch the [video overview](https://youtu.be/HGQS3b0nSng)
+5.	<a href="./5.Working with Team Explorer Everywhere.md">Module 5: Working with Team Explorer Everywhere</a> 
+    - In this exercise, we will explore Team Explorer Everywhere for Eclipse, a plug-in that provides you with access to features related to Visual Studio Team Services/ Team Foundation Server from within the Eclipse IDE. You will notice that many of the experiences in working with VSTS/TFS in Eclipse are similar to working inside Visual Studio, such as source control, work item tracking, or build automation.
+    - Watch the [video overview](https://youtu.be/ATrltkuUN7M)
+6.	<a href="./6.Setting up local build agents.md">Module 6: Setting up local build agents</a>  
+    - In this exercise, you will configure a VSTS Cross Platform Build & Release Agent on the local machine. You will download and configure the agent.
+    - Watch the [video overview](https://youtu.be/OtF4iw-hti4)
+7.	<a href="./7.Branches, Pull Requests and CI.md">Module 7: Branches, Pull Requests and CI</a> 
+    - In this exercise, we will see how we can create branches for Git repositories, create pull requests and also configure continuous integration.
+    - Watch the [video overview](https://youtu.be/GCX6oRgNiqY)
+8.	<a href="./8.Automating Deployments with Release Management.md">Module 8: Automating Deployments with Release Management</a> 
+    - In this exercise you will download a Tomcat task from the VSTS Marketplace so that you can automate deployment of the website.
+    - Watch the [video overview](https://youtu.be/hqfzWDd9DL8)
+9.	<a href="./9.Running Selenium Tests.md">Module 9: Running Selenium Tests</a> 
+    - In this exercise you will see how to add Selenium tests to the deployment pipeline.
+    - Watch the [video overview](https://youtu.be/_JWmnsZVNhQ)
+10.	<a href="./10.DeploytoAzure.md">Module 10: Deploying to Azure</a>
+    - In this exercise, you will learn how to deploy the application to Azure using Azure Resource Manager templates to create an Azure Resource Group that will contain a virtual machine installed and configured with Java, Tomcat and MySQL.
+    - Watch the [video overview](https://youtu.be/1L4eKXo5DHo)
+11.	<a href="./11. Application Insights.md">Module 11: Application Insights</a>
+    - In this exercise, you will learn how to configure Application Insights to monitor your web application that you have just released
+    - Watch the [video overview](https://youtu.be/RPQViU33qqA)
 
-
-Once you get your team environment set up, you&#39;ll start working on an Intranet site for a fictitious company, MyShuttle.biz, where you&#39;ll update the site, deploy it and test it all with the VM you&#39;re using and Visual Studio Team Services.
+Once you get your team environment set up, you'll start working on an Intranet site for a fictitious company, MyShuttle.biz, where you'll update the site, deploy it and test it all with the VM you're using and Visual Studio Team Services.
 
 Target Audience
 -----------------------------------------
