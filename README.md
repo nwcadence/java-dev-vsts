@@ -6,6 +6,8 @@ These hands on labs allow you to explore how VSTS works in a Linux environment w
 
 The [labs](labs/readme.md) use a pre-built virtual machine image that is preconfigured with all the software you require to run through the labs.  To use the labs, you will run a copy of this image in your own Azure subscription.
 
+> We've recorded some short videos that intro each lab. Check out this [playlist on YouTube](https://youtu.be/O1UTj-wZr3k?list=PLu1D89Nlvq9hUaf-wdBXVcKfQiqY7Y0AI).
+
 Instead of manually creating the resources in Azure, you are going to use Azure Resource Management (ARM) templates.
 
 If you require assistance with these labs, contact Northwest Cadence through our [website](http://nwcadence.com).
