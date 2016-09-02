@@ -56,7 +56,7 @@ If you require assistance with these labs, contact Northwest Cadence through our
 1. Run the following AzCopy command substituting your own values for the storage account name and key.
 
 	```
-	"%PROGRAMFILES(x86)%\Microsoft SDKs\Azure\AzCopy\AzCopy.exe" /Source:https://vstsjl2016vhd.blob.core.windows.net/vhd /Pattern:"vstsjlvhd072216.vhd" /Dest:YOUR_STORAGE_ACCOUNT_URI /DestKey:YOUR_STORAGE_ACCOUNT_KEY
+	"%PROGRAMFILES(x86)%\Microsoft SDKs\Azure\AzCopy\AzCopy.exe" /Source:https://vstsjl2016vhd.blob.core.windows.net/vhd /Pattern:"vstsjlvhd082416.vhd" /Dest:YOUR_STORAGE_ACCOUNT_URI /DestKey:YOUR_STORAGE_ACCOUNT_KEY
 	```
 
 	`YOUR_STORAGE_ACCOUNT_URI` - should be in the format of https://YOUR_STORAGE_ACCOUNT_NAME.blob.core.windows.net/vhd
@@ -85,7 +85,7 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 	Provide a public DNS name
 
-	Provide the URI to the vhd which should look like this: https://YOUR_STORAGE_ACCOUNT_NAME.blob.core.windows.net/vhd/vstsjlvhd072216.vhd
+	Provide the URI to the vhd which should look like this: https://YOUR_STORAGE_ACCOUNT_NAME.blob.core.windows.net/vhd/vstsjlvhd082416.vhd
 
 1. Check the Resource Group in the Azure Portal
     When the deployment completes, you should see the following resources in the Azure Portal:
