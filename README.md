@@ -63,6 +63,8 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 	It will take approximately 10 minutes to copy the image to your storage account.
 
+> **For Linux/Mac**, AzCopy is not available for Mac/Linux OSs. However, Azure CLI is a suitable alternative for copying data to and from Azure Storage. Read [Using the Azure CLI with Azure Storage](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli) to learn more.
+> You may want to use a command like: *azure storage blob copy start --source-uri https://vstsjl2016vhd.blob.core.windows.net/vhd/vstsjlvhd082416.vhd  --dest-blob <BLOB_NAME> --dest-container <CONTAINER_NAME> -c <YOUR_STORAGE_CONNECTION_STRING>*
 
 ## Task 3: Provision the VM and Dependent Resources
 
