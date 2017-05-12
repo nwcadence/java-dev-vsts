@@ -66,6 +66,8 @@ If you require assistance with these labs, contact Northwest Cadence through our
 > **For Linux/Mac**, AzCopy is not available for Mac/Linux OSs. However, Azure CLI is a suitable alternative for copying data to and from Azure Storage. Read [Using the Azure CLI with Azure Storage](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli) to learn more.
 > You may want to use a command like: *azure storage blob copy start --source-uri https://vstsjl2016vhd.blob.core.windows.net/vhd/vstsjlvhd082416.vhd  --dest-blob <BLOB_NAME> --dest-container <CONTAINER_NAME> -c <YOUR_STORAGE_CONNECTION_STRING>*
 
+> **Update** Azure team has made it easy to run Azure CLI commands from the Azure portal directly through [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) an interactive, browser-accessible shell for managing Azure resources.
+
 ## Task 3: Provision the VM and Dependent Resources
 
 1. Create the VM and dependent resources.
