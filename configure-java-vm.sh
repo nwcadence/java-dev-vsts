@@ -29,7 +29,7 @@ apt-get update
 apt-get install google-chrome-stable --allow-unauthenticated -y
 
 
-### Install Gradle and Java
+### Install Gradle, Java, Maven
 apt-get install gradle -y
 apt-get install openjdk-8-jdk openjdk-8-jre -y
 
@@ -177,15 +177,31 @@ apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
 apt-get update
 apt-get install docker-engine -y
 
-### Pull and start Docker images for Jenkins and Sonarqube
+### Pull Docker images for Jenkins and Sonarqube
 
 docker pull jenkins
 docker pull sonarqube
 
-docker run -d --restart=always --name jenkins -e JAVA_OPTS=-Djenkins.install.runSetupWizard=false -p 8080:8080 -p 50000:50000 jenkins
+####################################
+# Customize the docker jenkins image
+
+# create a jenkins build file with a list of plugins to install
+# in the RUN command
+mkdir ~/docker
+cat >~/docker/Dockerfile  <<EOF
+FROM jenkins
+USER root
+RUN apt-get update && apt-get install maven -y
+RUN /usr/local/bin/install-plugins.sh maven-plugin git
+EOF
+
+# build the image
+docker build -t vsts/jenkins:latest ~/docker
+####################################
+
+# run the jenkins/sonarqube images
+docker run -d --restart=always --name jenkins -e JAVA_OPTS=-Djenkins.install.runSetupWizard=false -p 8080:8080 -p 50000:50000 vsts/jenkins
 docker run -d --restart=always --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
-
-
 
 ################################################################
 # Section 4 - Cleanup and Reboot
