@@ -29,9 +29,10 @@ apt-get update
 apt-get install google-chrome-stable --allow-unauthenticated -y
 
 
-### Install Gradle, Java, Maven
+### Install Gradle, Java, Maven, mysql-client
 apt-get install gradle -y
 apt-get install openjdk-8-jdk openjdk-8-jre -y
+apt-get install mysql-client -y
 
 ### Set environment variables for Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -191,7 +192,7 @@ mkdir ~/docker
 cat >~/docker/Dockerfile  <<EOF
 FROM jenkins
 USER root
-RUN apt-get update && apt-get install maven -y
+RUN apt-get update && apt-get install maven -y && export MAVEN_HOME=/usr/share/maven
 RUN /usr/local/bin/install-plugins.sh maven-plugin git
 EOF
 
