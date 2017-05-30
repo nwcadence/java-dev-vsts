@@ -166,7 +166,6 @@ return polkit.Result.YES;
 EOF
 
 
-
 ################################################################
 # Section 3 - Install and Configure Docker
 ################################################################
@@ -178,8 +177,11 @@ apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
 apt-get update
 apt-get install docker-engine -y
 
-### Pull Docker images for Jenkins and Sonarqube
+### install docker-compose
+curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
+### Pull Docker images for Jenkins and Sonarqube
 docker pull jenkins
 docker pull sonarqube
 
@@ -193,7 +195,7 @@ cat >~/docker/Dockerfile  <<EOF
 FROM jenkins
 USER root
 RUN apt-get update && apt-get install maven -y && export MAVEN_HOME=/usr/share/maven
-RUN /usr/local/bin/install-plugins.sh maven-plugin git
+RUN /usr/local/bin/install-plugins.sh maven-plugin git sonar jacoco tfs
 EOF
 
 # build the image
@@ -203,6 +205,85 @@ docker build -t vsts/jenkins:latest ~/docker
 # run the jenkins/sonarqube images
 docker run -d --restart=always --name jenkins -e JAVA_OPTS=-Djenkins.install.runSetupWizard=false -p 8080:8080 -p 50000:50000 vsts/jenkins
 docker run -d --restart=always --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+
+################################################################
+# Section 3.5 - Secure docker daemon
+################################################################
+STR=2048
+mkdir -p "/home/$username/.docker"
+pushd $username/.docker
+
+if [ ! -f "ca.src" ]; then
+  echo 01 > ca.srl
+fi
+
+openssl genrsa \
+  -out ca-key.pem $STR
+
+openssl req \
+  -new \
+  -key ca-key.pem \
+  -x509 \
+  -days 3650 \
+  -nodes \
+  -subj "/CN=$HOSTNAME" \
+  -out ca.pem
+
+openssl genrsa \
+  -out server-key.pem $STR
+
+openssl req \
+  -subj "/CN=$HOSTNAME" \
+  -new \
+  -key server-key.pem \
+  -out server.csr
+
+openssl x509 \
+  -req \
+  -days 3650 \
+  -in server.csr \
+  -CA ca.pem \
+  -CAkey ca-key.pem \
+  -out server-cert.pem
+
+openssl genrsa \
+  -out key.pem $STR
+
+openssl req \
+  -subj "/CN=docker.client" \
+  -new \
+  -key key.pem \
+  -out client.csr
+
+echo extendedKeyUsage = clientAuth > extfile.cnf
+
+openssl x509 \
+  -req \
+  -days 3650 \
+  -in client.csr \
+  -CA ca.pem \
+  -CAkey ca-key.pem \
+  -out cert.pem \
+  -extfile extfile.cnf
+
+# configure daemon
+cat >/etc/docker/daemon.json << EOF
+{
+  "tls": true,
+  "tlscert": "/home/$username/.docker/server-cert.pem",
+  "tlskey": "/home/$username/.docker/server-key.pem",
+  "hosts": ["tcp://$HOSTNAME:2376"]
+}
+EOF
+
+# set default environment variables
+export DOCKER_HOST=tcp://$HOSTNAME:2376 DOCKER_TLS_VERIFY=1
+
+popd
+
+# add user to docker group to prevent having to use sudo every time
+# requires logging out and logging in again
+usermod -aG docker $username
 
 ################################################################
 # Section 4 - Cleanup and Reboot
