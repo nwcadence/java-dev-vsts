@@ -213,7 +213,7 @@
                         ]
                     },
                     "commandToExecute": {
-                        "value": "[concat('bash configure-java-vm.sh ', parameters('adminUsername'))]"
+                        "value": "[concat('bash configure-java-vm.sh ', parameters('adminUsername'), ' ', resourceGroup().location)]"
                     }
                 }
             },

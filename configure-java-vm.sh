@@ -6,13 +6,14 @@
 ################################################################
 
 ### Validate parameters
-if [[ !("$#" -eq 1) ]]; 
+if [[ !("$#" -eq 2) ]]; 
     then echo "Parameters missing for java vm configuration." >&2
     exit 1
 fi
 
 ### Get parameters
 username=$1
+azureregion=$2
 
 
 ################################################################
@@ -226,25 +227,27 @@ openssl req \
   -x509 \
   -days 3650 \
   -nodes \
-  -subj "/CN=$HOSTNAME" \
+  -subj "/CN=$HOSTNAME.$azureregion.cloudapp.azure.com" \
   -out ca.pem
 
 openssl genrsa \
   -out server-key.pem $STR
 
 openssl req \
-  -subj "/CN=$HOSTNAME" \
+  -subj "/CN=$HOSTNAME.$azureregion.cloudapp.azure.com" \
   -new \
   -key server-key.pem \
   -out server.csr
 
+echo "subjectAltName = IP:127.0.0.1,IP:10.0.0.4,DNS.1:$HOSTNAME" > extfile.cnf
 openssl x509 \
   -req \
   -days 3650 \
   -in server.csr \
   -CA ca.pem \
   -CAkey ca-key.pem \
-  -out server-cert.pem
+  -out server-cert.pem \
+  -extfile extfile.cnf
 
 openssl genrsa \
   -out key.pem $STR
@@ -276,8 +279,15 @@ cat >/etc/docker/daemon.json << EOF
 }
 EOF
 
+# fix the docker service file to start without specifying a host
+# since the hosts are now defined in the daemon.json file
+# there may be a better way to do this without tinkering with the lib docker.service file,
+# but I can't find a way
+sed -e "s/-H fd:\/\///g" -i /lib/systemd/system/docker.service
+systemctl daemon-reload
+
 # set default environment variables
-export DOCKER_HOST=tcp://$HOSTNAME:2376 DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376 DOCKER_TLS_VERIFY=1
 
 popd
 
