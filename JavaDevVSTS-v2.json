@@ -187,6 +187,20 @@
                             "priority": 1200,
                             "direction": "Inbound"
                         }
+                    },
+                    {
+                        "name": "allow-docker-2376",
+                        "properties": {
+                            "description": "HTTP port",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "2376",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1210,
+                            "direction": "Inbound"
+                        }
                     }
                 ]
             }

@@ -182,9 +182,10 @@ apt-get install docker-engine -y
 curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-### Pull Docker images for Jenkins and Sonarqube
+### Pull Docker images for Jenkins, Sonarqube and VSTS Agent - speeds labs to have images local
 docker pull jenkins
 docker pull sonarqube
+docker pull microsoft/vsts-agent
 
 ####################################
 # Customize the docker jenkins image
@@ -210,11 +211,11 @@ docker run -d --restart=always --name sonarqube -p 9000:9000 -p 9092:9092 sonarq
 ################################################################
 # Section 3.5 - Secure docker daemon
 ################################################################
-STR=2048
+STR=4096
 mkdir -p "/home/$username/.docker"
-pushd $username/.docker
+pushd /home/$username/.docker
 
-if [ ! -f "ca.src" ]; then
+if [ ! -f "ca.srl" ]; then
   echo 01 > ca.srl
 fi
 
@@ -227,7 +228,7 @@ openssl req \
   -x509 \
   -days 3650 \
   -nodes \
-  -subj "/CN=$HOSTNAME.$azureregion.cloudapp.azure.com" \
+  -subj "/CN=*" \
   -out ca.pem
 
 openssl genrsa \
@@ -239,7 +240,7 @@ openssl req \
   -key server-key.pem \
   -out server.csr
 
-echo "subjectAltName = IP:127.0.0.1,IP:10.0.0.4,DNS.1:$HOSTNAME" > extfile.cnf
+echo "subjectAltName = DNS:$HOSTNAME.$azureregion.cloudapp.azure.com,IP:127.0.0.1,IP:10.0.0.4" > extfile.cnf
 openssl x509 \
   -req \
   -days 3650 \
