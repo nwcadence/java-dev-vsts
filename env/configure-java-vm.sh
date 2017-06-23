@@ -124,24 +124,18 @@ make install
 #Step 4 - Modify Service Unit Files
 ################################################################## 
 
-
 ## Needed in order to have systemd working properly with xrdp
 echo "-----------------------"
 echo "Modify xrdp.service "
 echo "-----------------------"
-
 #Comment the EnvironmentFile - Ubuntu does not have sysconfig folder
 sed -i.bak 's/EnvironmentFile/#EnvironmentFile/g' /lib/systemd/system/xrdp.service
-#Replace /sbin/xrdp with /sbin/local/xrdp as this is the correct location
-sed -i.bak 's/sbin\/xrdp/local\/sbin\/xrdp/g' /lib/systemd/system/xrdp.service
+
 echo "-----------------------"
 echo "Modify xrdp-sesman.service "
 echo "-----------------------"
-
 #Comment the EnvironmentFile - Ubuntu does not have sysconfig folder
 sed -i.bak 's/EnvironmentFile/#EnvironmentFile/g' /lib/systemd/system/xrdp-sesman.service
-#Replace /sbin/xrdp with /sbin/local/xrdp as this is the correct location
-sed -i.bak 's/sbin\/xrdp/local\/sbin\/xrdp/g' /lib/systemd/system/xrdp-sesman.service
 
 #Issue systemctl command to reflect change and enable the service
 systemctl daemon-reload

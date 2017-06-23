@@ -223,7 +223,7 @@
                     },
                     "fileUris": {
                         "value": [
-                            "https://raw.githubusercontent.com/nwcadence/java-dev-vsts/v2/configure-java-vm.sh"
+                            "https://raw.githubusercontent.com/nwcadence/java-dev-vsts/v2/env/configure-java-vm.sh"
                         ]
                     },
                     "commandToExecute": {
