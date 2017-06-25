@@ -29,7 +29,6 @@ sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 apt-get update
 apt-get install google-chrome-stable --allow-unauthenticated -y
 
-
 ### Install Gradle, Java, Maven, mysql-client
 apt-get install gradle -y
 apt-get install openjdk-8-jdk openjdk-8-jre -y
@@ -38,7 +37,6 @@ apt-get install mysql-client -y
 ### Set environment variables for Java
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
-
 
 ### Install UMake
 add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
@@ -51,7 +49,6 @@ sudo -u $username umake ide idea /home/$username/.local/share/umake/ide/idea
 sudo -u $username umake ide visual-studio-code --accept-license /home/$username/.local/share/umake/web/visual-studio-code
 
 
-
 ################################################################
 # Section 2 - Configure Desktop Environment and Remote Connectivity
 ################################################################
@@ -60,7 +57,19 @@ sudo -u $username umake ide visual-studio-code --accept-license /home/$username/
 apt-get update
 apt-get install xfce4 -y
 apt-get install xrdp -y
+apt-get install gnome-terminal -y
 
+cd /mnt
+git clone https://github.com/nwcadence/java-dev-vsts.git
+
+##****TEMP FOR V2 branch
+cd /mnt/java-dev-vsts
+git checkout v2
+##****TEMP FOR V2 branch
+
+cp -r /mnt/java-dev-vsts/env/config-template/* ~/.config
+find ~/.config -type f -exec sed -i 's/__USERNAME__/$username/g' {} +
+chown -R $username ~/.config/*
 
 ### Compile new version of xrdp
 ### Modified version of install-xrdp-1.8.sh from http://www.c-nergy.be/blog
@@ -97,7 +106,7 @@ cd /mnt
 ## -- Download the xrdp latest files
 echo "Ready to start the download of xrdp package"
 echo "-------------------------------------------"
-sudo git clone https://github.com/neutrinolabs/xrdp.git
+git clone https://github.com/neutrinolabs/xrdp.git
 
 ## -- compiling xrdp packages
 
@@ -159,7 +168,6 @@ return polkit.Result.YES;
 }
 });
 EOF
-
 
 ################################################################
 # Section 3 - Install and Configure Docker

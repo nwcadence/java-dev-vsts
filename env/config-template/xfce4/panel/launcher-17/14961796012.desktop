@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Idea
+Icon=/home/__USERNAME__/.local/share/umake/ide/idea/bin/idea.png
+Exec="/home/__USERNAME__/.local/share/umake/ide/idea/bin/idea.sh" %f
+Comment=IntelliJ IDEA Community Edition (UDTC)
+Categories=Development;IDE;
+Terminal=false
+X-XFCE-Source=file:///home/__USERNAME__/.local/share/applications/jetbrains-idea-ce.desktop

@@ -1,0 +1,23 @@
+[xfdesktop-version-4.10.3+-rcfile_format]
+4.10.3+=true
+
+[Floppy Disk]
+row=1
+col=0
+
+[120C1A1A72645f72]
+row=0
+col=0
+
+[Trash]
+row=2
+col=0
+
+[/]
+row=3
+col=0
+
+[/home/__USERNAME__]
+row=4
+col=0
+
