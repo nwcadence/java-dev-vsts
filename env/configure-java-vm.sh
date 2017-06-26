@@ -68,7 +68,7 @@ git checkout v2
 ##****TEMP FOR V2 branch
 
 cp -r /mnt/java-dev-vsts/env/config-template/* /home/$username/.config
-find /home/$username/.config -type f -exec sed -i 's/__USERNAME__/$username/g' {} +
+find /home/$username/.config -type f -exec sed -i "s/__USERNAME__/$username/g" {} +
 chown -R $username /home/$username/.config/*
 
 ### Compile new version of xrdp
