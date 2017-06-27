@@ -17,7 +17,7 @@ In this task you will generate a PAT for yourself. You will use this PAT to conn
 1. Open Chrome and browse to `http://<youraccount>.visualstudio.com` (where `youraccount` is the account you created in VSTS).
 1. In the upper right, click on your profile image and Click Security.
 
-![Click on Security](images/docker-build-agent/click-security.png "Click on Security")
+    ![Click on Security](images/docker-build-agent/click-security.png "Click on Security")
 
 1. On the Personal access tokens page, click the "Add" button. Enter "java" (or whatever you want) for the Description. Scroll to the bottom of the page and click "Create token".
 
@@ -25,7 +25,7 @@ In this task you will generate a PAT for yourself. You will use this PAT to conn
 
 1. Click on the Visual Studio Code icon in the toolbar to open Visual Studio Code.
 
-![Open VS Code](images/docker-build-agent/vs-code.png "Open VS Code")
+    ![Open VS Code](images/docker-build-agent/vs-code.png "Open VS Code")
 
 1. Press Ctrl-N (or use File->New File) to create a new file. Paste in your PAT. Save this file (File->Save or Ctrl-S) to `/home/vmadmin/pat.txt`.
 
@@ -50,7 +50,7 @@ where:
 
 You should see a message indicating "Listening for Jobs":
 
-![The agent container running](images/docker-build-agent/agent-container-running.png "The agent container running")
+    ![The agent container running](images/docker-build-agent/agent-container-running.png "The agent container running")
 
 > **Note**: This starts a docker container (called vsts-agent) that has a VSTS agent running inside it. The agent is connected to your VSTS account and has also mounted the VM Docker socket so that the container can perform Docker operations (like building containers). You can move this terminal to the side since the container is running interactively, so the prompt you are seeing is actually inside the container. Open a new terminal by clicking on the Terminal Emulator icon in the toolbar.
 
