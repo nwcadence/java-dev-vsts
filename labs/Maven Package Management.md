@@ -67,10 +67,10 @@ In this task you will create a Maven package feed. You will publish packages to 
 
 You now have a feed that you can publish package to.
 
-Connect the VSTS Agent to the Package Feed
-------------------------------------------
+Create a Maven Settings File with the Feed Credentials
+------------------------------------------------------
 
-In this task you will create credentials for the Maven feed and then update both the VM and the Docker container running the VSTS agent so that they have secure access to the feed.
+In this task you will create credentials for the Maven feed. You will then create a settings.xml file containing the credentials.
 
 1. In the Packages Hub, make sure you have selected the Maven feed and click "Connect to Feed".
 1. In the left menu, click on Maven.
@@ -85,23 +85,29 @@ In this task you will create credentials for the Maven feed and then update both
 
 ![Copy the Maven Credentials](images/packagemanagement/maven-creds.png "Copy the Maven Credentials")
 
-1. In Visual Studio Code or in IntelliJ, open the `MyShuttleCalc\maven\settings.xml`.
+1. In IntelliJ, open the `MyShuttleCalc\maven\settings.xml`.
 1. Delete the comment `<!-- paste maven package feed credentials section here !-->` and replace it with the snippet between the `<servers>` and `</servers>` tags so that the final result looks like this:
 
 ![Paste the Maven Credentials](images/packagemanagement/maven-paste-creds.png "Paste the Maven Credentials")
 
-1. Press Ctrl-S (or File->Save) and save the file to `/home/vmadmin/settings.xml`.
+1. Press Ctrl-S (or File->Save) and save the file.
+1. Click VCS->Commit Changes to commit your changes to the repo.
 
-1. Copy the file to the correct Maven location on the VM as well as in the VSTS agent container. Open a terminal and enter the following commands:
+![Commit changes](images/packagemanagement/vcs-commit.png "Commit changes")
+
+1. Enter "Adding maven credentials" to the commit message.
+1. Click the drop-down next to the Commit button and select "Commit and Push".
+
+> **Note**: If this is your first commit to VSTS, you will be prompted to update your display name and email address for the repo. These are simply for display purposes, but usually are matched to your VSTS profile.
+
+1. Place the settings.xml file containing your Maven feed credentials in the correct location for the VM as well as for the VSTS agent running in Docker by running the following commmands in a terminal:
 
 ```sh
-cp ~/settings.xml ~/.m2/
+cp ~/MyShuttleCalc/maven/settings.xml ~/.m2/
 docker exec -it vstsagent /bin/bash
 mkdir .m2
 exit
 docker cp ~/.m2/settings.xml vstsagent:/.m2/settings.xml
 ```
 
-> **Note**: The previous commands copy the settings file to the `.m2` directory on the VM. You then run a `docker exec` to connect to the vstsagent container. Inside the container, you create a `.m2` folder and then exit the container. Finally, you copy the same settings file from the VM into the container. Now both the VM and the VSTS agent have access to the Package Management feed.
-
-
+> **Note**: The previous commands copy the settings file to the `.m2` directory on the VM so that Maven can resolve packages in IntelliJ. You then run a `docker exec` to connect to the vstsagent container. Inside the container, you create a `.m2` folder and then exit the container. Finally, you copy the same settings file from the VM into the container. Now both the VM and the VSTS agent have access to the Package Management feed.
