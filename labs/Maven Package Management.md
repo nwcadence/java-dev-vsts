@@ -1,6 +1,6 @@
 ## Maven Package Management with Visual Studio Team Services
 
-In this exercise, you are going to clone a Github repo into VSTS. This repo contains a class library that is used by the MyShuttle2 application. You will configure the build to publish the MyShuttleCalc package to a VSTS Maven repository so that it can be consumed by MyShuttle and any other applications that require the calculation code.
+In this exercise, you are going to clone a Github repo into VSTS. This repo contains a class library that is used by the MyShuttle2 application. You will configure the build to publish the MyShuttleCalc package to a VSTS Maven repository so that it can be consumed by MyShuttle2 and any other applications that require the calculation code.
 
 This exercise assumes you have completed the exercises to create a Team Project and have set up the Docker private VSTS agent. This exercise uses a team project named **jdev**, though your team project name may differ.
 
@@ -91,6 +91,14 @@ In this task you will create credentials for the Maven feed. You will then creat
 ![Paste the Maven Credentials](images/packagemanagement/maven-paste-creds.png "Paste the Maven Credentials")
 
 1. Press Ctrl-S (or File->Save) and save the file.
+1. In VSTS, go back to the Connect to Feed dialog on your Maven feed. Click on the copy button in the section labeled `Add this feed to your project pom.xml inside the <repositories> tag`.
+
+![Get the package repository settings from VSTS](images/packagemanagement/maven-packagefeed-settings.png "Get the package repository settings from VSTS")
+
+1. In IntelliJ, open the `pom.xml` file. Update the `<repositories>` tag as well as the `<distributionManagement>` tag so that they point to your feed.
+
+![Updating the repo settings in pom.xml](images/packagemanagement/pom-repo.png "Updating the repo settings in pom.xml")
+
 1. Click VCS->Commit Changes to commit your changes to the repo.
 
 ![Commit changes](images/packagemanagement/vcs-commit.png "Commit changes")
@@ -100,14 +108,57 @@ In this task you will create credentials for the Maven feed. You will then creat
 
 > **Note**: If this is your first commit to VSTS, you will be prompted to update your display name and email address for the repo. These are simply for display purposes, but usually are matched to your VSTS profile.
 
-1. Place the settings.xml file containing your Maven feed credentials in the correct location for the VM as well as for the VSTS agent running in Docker by running the following commmands in a terminal:
+1. Copy the maven settings file to the .m2 directory so that local Maven operations will succeed by running the following command in a terminal:
 
 ```sh
 cp ~/MyShuttleCalc/maven/settings.xml ~/.m2/
-docker exec -it vstsagent /bin/bash
-mkdir .m2
-exit
-docker cp ~/.m2/settings.xml vstsagent:/.m2/settings.xml
 ```
 
-> **Note**: The previous commands copy the settings file to the `.m2` directory on the VM so that Maven can resolve packages in IntelliJ. You then run a `docker exec` to connect to the vstsagent container. Inside the container, you create a `.m2` folder and then exit the container. Finally, you copy the same settings file from the VM into the container. Now both the VM and the VSTS agent have access to the Package Management feed.
+Creating a Build for Publishing a Maven Package
+-----------------------------------------------
+
+In this task you will create a build that will publish the MyShuttleCalc library to the Maven feed.
+
+1. Open VSTS and connect to your team project. Click on the Build & Release Hub and then click Builds. Click on +New to create a new build definition.
+
+![New build definition](images/packagemanagement/new-build.png "New build definition")
+
+1. In the templates window, type "maven" into the search box. Click apply on the Maven template.
+
+![Apply the Mavent template](images/packagemanagement/maven-template.png "Apply the Mavent template")
+
+1. In the Process page, change the name of the build to "MyShuttleCalc".
+
+![Change the name](images/packagemanagement/process-name.png "Change the name")
+
+1. Click on Options.
+1. Update the Build number format to `0.0$(rev:.r)` and update the build queue to `default` (this is the queue that the VSTS agent in the container is joined to).
+
+![Build options](images/packagemanagement/build-options.png "Build options")
+
+1. Click on Tasks. Click on the Maven task. Edit the following settings:
+
+| Field | Value | Notes |
+|---|---|---|
+| Options | `--settings ./maven/settings.xml` | Required to authenticate when pushing the Maven package to the feed. |
+| Goal(s) | `deploy -Dbuildversion=$(Build.BuildNumber)` | Tell Maven to publish the package |
+| Code Coverage Tool | `JaCoCo` | Change the code coverage format |
+| Source Files Directory | `src/main` | These files must be included in the coverage results |
+
+![Maven task options](images/packagemanagement/maven-task-opts.png "Maven task options")
+
+1. Click Save and Queue. Accept the defaults to queue the build.
+1. A green status bar indicates that the build has been queued. Click the build number to follow the logs in real time.
+
+![Open the build logs](images/packagemanagement/click-build-number.png "Open the build logs")
+
+1. When the build completes successfully, you can click on the build number to view the summary. Note the test results and code coverage.
+
+![Build summary page](images/packagemanagement/build-summary.png "Build summary page")
+
+> **Note**: Each time you run the build, the patch number (the last of the 3-digit version numbers) will increment. In the image above, the build has run 6 times so the latest build number is 0.0.6. The package version matches the build number because we supplied the build version number to Maven in the Maven task.
+
+1. navigate back to the Maven package feed. There you will see the MyShuttleCalc package.
+
+![The MyShuttleCalc package in the feed](images/packagemanagement/package-in-feed.png "The MyShuttleCalc package in the feed")
+
