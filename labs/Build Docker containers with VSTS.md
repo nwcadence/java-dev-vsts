@@ -44,6 +44,12 @@ In this task you will update the pom.xml file for the MyShuttle2 application so 
 > **Note**: You may have to reload the Maven project to update the plugins and dependencies. You can do this by clicking `View->Tool Windows->Maven` and then clicking the reload button (the top-left icon in the Maven project view).
 
 1. Click Build->Build Project and make sure there are no errors.
+1. Copy the maven settings file from the MyShuttleCalc project (you updated this file in another lab to include the authentication settings for the Maven package feed). Run the following command in a terminal:
+
+```sh
+cp ~/MyShuttleCalc/maven/settings.xml ~/MyShuttle2/maven/
+```
+
 1. Click VCS->Commit. Add a commit message "Updating feed settings". Click the drop-down on the Commit button and select Commit and Push. Click Push on the prompt.
 
     ![Commit the changes to the pom.xml file](images/vsts-build-docker/commit-changes.png "Commit the changes to the pom.xml file")
@@ -60,5 +66,50 @@ In this task you will create a VSTS build definition that will create two contai
 
     ![Create a new Build Definition](images/vsts-build-docker/new-build-def.png "Create a new Build Definition")
 
-1. Type "maven" into the search box. Click on the Maven template and click Apply.
-1. 
+1. Type "maven" into the search box. Select the Maven template and click Apply.
+1. Change the name of the build to MyShuttle2.
+1. On the Get Sources step, ensure that the repo is `MyShuttle2`, and the branch is `master`. Toggle the Advanced Settings toggle and change `Tag Sources` to "On Success".
+
+    ![Get Sources settings](images/vsts-build-docker/get-sources-settings.png "Get Sources settings")
+
+1. Click on the `Maven pom.xml` step and edit the following values:
+    | Parameter | Value | Notes |
+    |---|---|---|
+    | Options | `-DskipITs --settings ./maven/settings.xml` | Skips integration tests during the build |
+    | Code Coverage Tool | `JaCoCo` | Selects JaCoCo as the coverage tool |
+    | Source Files Directory | `src/main` | Sets the source files directory for JaCoCo |
+
+1. On the "Copy Files" task set the Contents to `**/*.war` to copy the war file to the artifact staging directory. The Publish Artifact task will publish the contents of this staging directory as build outputs.
+
+1. Under the list of tasks, click "Add Task". Type "docker" into the search box and then click the Apply button next to the Docker Compose task.
+
+    ![Add a Docker Compose task](images/vsts-build-docker/add-docker-compose.png "Add a Docker Compose task")
+
+1. If it is not positioned after the Publish Artifact task, then drag the Docker Compose task under it so that it is the last step in the build.
+1. Configure the settings of the Docker Compose task as follows:
+    | Parameter | Value | Notes |
+    |---|---|---|
+    | Container Registry Type | Azure Container Registry | This is to connect to the Azure Container Registry you created earlier |
+    | Azure Subscription | Your Azure subscription | The subscription that contains your registry |
+    | Azure Container Registry | Your registry | Select the Azure Container registry you created earlier |
+    | Additional Image Tags | `$(Build.BuildNumber)` | Sets a unique tag for each instance of the build |
+    | Include Latest Tag | Check (set to true) | Adds the `latest` tag to the images produced by this build |
+
+    ![Build Service Images Docker Compose task](images/vsts-build-docker/docker-compose-build-task.png "Build Service Images Docker Compose task")
+
+1. Right-click the Docker Compose task and click Clone to create a copy of the task.
+1. Position the new task so that it is below the Build Images task.
+1. Update the action to "Push services".
+
+    ![Push Service Images Docker Compose task](images/vsts-build-docker/docker-compose-push-task.png "Push Service Images Docker Compose task")
+
+1. On the options page, set the queue to `default` so that your dockerized agent is the agent to run this build.
+1. Click the "Save and Queue" button to save and queue this build. Click the Queue button in the dialog and then click the link in the green bar that appears at the top to go to the live logs for the build run.
+1. You should see a successful build. Click on the build number to navigate to the summary page.
+
+    ![Successful build](images/vsts-build-docker/build-success.png "Successful build")
+
+1. Navigate back to the Azure Portal and find your Azure Container Registry. Click on Repositories. You should see a `db` and a `web` repository. If you click on one of the repos, you will see a latest tag as well as tags for each build number.
+
+    ![Azure Container repos with published container images](images/vsts-build-docker/container-reg-repos.png "Azure Container repos with published container images")
+

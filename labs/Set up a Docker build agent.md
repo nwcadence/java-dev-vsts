@@ -42,17 +42,18 @@ In this task you will start a VSTS build agent container using Docker. This cont
 1. Enter the following command:
 
 ```sh
-docker run -e VSTS_ACCOUNT=<account> -e VSTS_TOKEN=<pat> -v /var/run/docker.sock:/var/run/docker.sock --name vstsagent -it microsoft/vsts-agent
+docker run -e VSTS_ACCOUNT=<account> -e VSTS_TOKEN=<pat> -e DOCKER_HOST=tcp://$HOSTNAME.<region>.cloudapp.azure.com:2376 -e DOCKER_TLS_VERIFY=1 -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker --name vstsagent -it microsoft/vsts-agent
 ```
 where:
     - _account_ is your VSTS account name (the bit before .visualstudio.com)
     - _pat_ is your PAT
+    - _region_ is the azure region your VM is in (e.g. westus)
 
 You should see a message indicating "Listening for Jobs":
 
     ![The agent container running](images/docker-build-agent/agent-container-running.png "The agent container running")
 
-> **Note**: This starts a docker container (called vsts-agent) that has a VSTS agent running inside it. The agent is connected to your VSTS account and has also mounted the VM Docker socket so that the container can perform Docker operations (like building containers). You can move this terminal to the side since the container is running interactively, so the prompt you are seeing is actually inside the container. Open a new terminal by clicking on the Terminal Emulator icon in the toolbar.
+> **Note**: This starts a docker container (called vsts-agent) that has a VSTS agent running inside it. The agent is connected to your VSTS account and has also mounted the VM Docker socket so that the container can perform Docker operations (like building containers). It has also mounted the certificates and set the docker environment variables to enable it to execute docker workloads. You can move this terminal to the side since the container is running interactively, so the prompt you are seeing is actually inside the container. Open a new terminal by clicking on the Terminal Emulator icon in the toolbar.
 
 1. If your container stops running for some reason, you can run the following commands to restart and attach to it:
 
