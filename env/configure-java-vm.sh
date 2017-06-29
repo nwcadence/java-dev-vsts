@@ -34,9 +34,8 @@ apt-get install gradle -y
 apt-get install openjdk-8-jdk openjdk-8-jre -y
 apt-get install mysql-client -y
 
-### Set environment variables for Java
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin
+### Set environment variable for Java
+echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /home/$username/.profile
 
 ### Install UMake
 add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
@@ -290,7 +289,8 @@ sed -e "s/-H fd:\/\///g" -i /lib/systemd/system/docker.service
 systemctl daemon-reload
 
 # set default environment variables
-export DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376 DOCKER_TLS_VERIFY=1
+echo "export DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376" >> /home/$username/.profile
+echo "export DOCKER_TLS_VERIFY=1" >> /home/$username/.profile
 
 popd
 
