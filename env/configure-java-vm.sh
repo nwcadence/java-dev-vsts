@@ -191,10 +191,12 @@ docker pull microsoft/vsts-agent
 ####################################
 # Customize the docker jenkins image
 
+echo "Customizing Jenkins image..."
+echo "-----------------------------------"
 # create a jenkins build file with a list of plugins to install
 # in the RUN command
-mkdir ~/docker
-cat >~/docker/Dockerfile  <<EOF
+mkdir -p ~/docker/jenkins
+cat >~/docker/jenkins/Dockerfile  <<EOF
 FROM jenkins
 USER root
 RUN apt-get update && apt-get install maven -y && export MAVEN_HOME=/usr/share/maven
@@ -202,7 +204,8 @@ RUN /usr/local/bin/install-plugins.sh maven-plugin git sonar jacoco tfs
 EOF
 
 # build the image
-docker build -t vsts/jenkins:latest ~/docker
+echo "----building image------------"
+docker build -t vsts/jenkins:latest ~/docker/jenkins
 ####################################
 
 # run the jenkins/sonarqube images
@@ -297,6 +300,47 @@ popd
 # add user to docker group to prevent having to use sudo every time
 # requires logging out and logging in again
 usermod -aG docker $username
+
+####################################
+# Customize the docker vsts image
+
+echo "Customizing VSTS Agent image..."
+echo "-----------------------------------"
+# create a custom vstsagent image with phantomjs installed
+mkdir -p ~/docker/vstsagent
+cp -r /home/$username/.docker ~/docker/vstsagent
+cat >~/docker/vstsagent/Dockerfile  <<EOF
+FROM microsoft/vsts-agent
+
+ARG PHANTOM=phantomjs-2.1.1-linux-x86_64
+RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2 && \
+  tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share && \
+  ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs && \
+  ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs && \
+  ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
+
+# configure docker
+COPY .docker /root/.docker/
+ENV DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376 DOCKER_TLS_VERIFY=1
+EOF
+
+# build the image
+echo "----building image------------"
+docker build -t vsts/agent:latest ~/docker/vstsagent
+####################################
+
+####################################
+# Configure PhantomJS on VM
+
+echo "Configuring PhantomJS..."
+echo "-----------------------------------"
+PHANTOM='phantomjs-2.1.1-linux-x86_64'
+curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2
+tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
+####################################
 
 ################################################################
 # Section 4 - Cleanup and Reboot

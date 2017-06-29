@@ -41,23 +41,44 @@ In this task you will start a VSTS build agent container using Docker. This cont
 
 1. Enter the following command:
 
-```sh
-docker run -e VSTS_ACCOUNT=<account> -e VSTS_TOKEN=<pat> -e DOCKER_HOST=tcp://$HOSTNAME.<region>.cloudapp.azure.com:2376 -e DOCKER_TLS_VERIFY=1 -v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker --name vstsagent -it microsoft/vsts-agent
-```
-where:
+    ```sh
+    docker run -e VSTS_ACCOUNT=<account> -e VSTS_TOKEN=<pat> -v /var/run/docker.sock:/var/run/docker.sock --name vstsagent -it vsts/agent
+    ```
+
+    where:
     - _account_ is your VSTS account name (the bit before .visualstudio.com)
     - _pat_ is your PAT
-    - _region_ is the azure region your VM is in (e.g. westus)
+    
+    You should see a message indicating "Listening for Jobs":
 
-You should see a message indicating "Listening for Jobs":
-
+    ```
     ![The agent container running](images/docker-build-agent/agent-container-running.png "The agent container running")
+    ```
 
-> **Note**: This starts a docker container (called vsts-agent) that has a VSTS agent running inside it. The agent is connected to your VSTS account and has also mounted the VM Docker socket so that the container can perform Docker operations (like building containers). It has also mounted the certificates and set the docker environment variables to enable it to execute docker workloads. You can move this terminal to the side since the container is running interactively, so the prompt you are seeing is actually inside the container. Open a new terminal by clicking on the Terminal Emulator icon in the toolbar.
+    > **Note**: This starts a docker container (called vstsagent) that has a VSTS agent running inside it. The agent is connected to your VSTS account and has also mounted the VM Docker socket so that the container can perform Docker operations (like building containers). It is created from a Dockerfile (listed below) that installs PhantomJS for running headless Selenium tests and configures Docker certs and environment variables. You can move this terminal to the side since the container is running interactively, so the prompt you are seeing is actually inside the container. Open a new terminal by clicking on the Terminal Emulator icon in the toolbar.
+
+    ```
+    # Dockerfile for custom vsts agent image with phantomjd and docker config
+    FROM microsoft/vsts-agent
+
+    # install phantomjs
+    ARG PHANTOM=phantomjs-2.1.1-linux-x86_64
+    RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2 && \
+    tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share && \
+    ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs && \
+    ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs && \
+    ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
+
+    # configure docker
+    COPY .docker /root/.docker/
+    ENV DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376 DOCKER_TLS_VERIFY=1
+    ```
+
+    > **Note**: `$HOSTNAME` and `$azureregion` are variables that resolve in the setup script that executed when you set up your Azure VM.
 
 1. If your container stops running for some reason, you can run the following commands to restart and attach to it:
 
-```sh
-docker start vstsagent
-docker attach vstsagent
-```
+    ```sh
+    docker start vstsagent
+    docker attach vstsagent
+    ```

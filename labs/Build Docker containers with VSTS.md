@@ -79,9 +79,11 @@ In this task you will create a VSTS build definition that will create two contai
     Code Coverage Tool | `JaCoCo` | Selects JaCoCo as the coverage tool
     Source Files Directory | `src/main` | Sets the source files directory for JaCoCo
 
-1. Click on the "Copy Files" task. To make the war file and the docker yml files available to releases in upcoming labs, you will want to copy them into the artifact staging directory so that the Publish step can publish them. Set the Contents property to:
+1. Click on the "Copy Files" task. To make the war file, test jar file and the docker yml files available to releases in upcoming labs, you will want to copy them into the artifact staging directory so that the Publish step can publish them. Set the Contents property to:
     ```
-    **/*.war
+    target/myshuttledev*.?ar
+    target/test-jars/*
+    config/testng.xml
     *.yml
     ```
 
