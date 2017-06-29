@@ -290,7 +290,7 @@ systemctl daemon-reload
 
 # set default environment variables
 echo "export DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376" >> /home/$username/.profile
-echo "export DOCKER_TLS_VERIFY=1=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376" >> /home/$username/.profile
+echo "export DOCKER_TLS_VERIFY=1" >> /home/$username/.profile
 
 popd
 
