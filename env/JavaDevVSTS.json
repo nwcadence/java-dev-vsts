@@ -116,7 +116,8 @@
                             "subnet": {
                                 "id": "[variables('subnetRef')]"
                             },
-                            "privateIPAllocationMethod": "Dynamic",
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "10.0.0.4",
                             "publicIpAddress": {
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
                             }
@@ -185,20 +186,6 @@
                             "destinationAddressPrefix": "*",
                             "access": "Allow",
                             "priority": 1200,
-                            "direction": "Inbound"
-                        }
-                    },
-                    {
-                        "name": "allow-docker-2376",
-                        "properties": {
-                            "description": "HTTP port",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "2376",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 1210,
                             "direction": "Inbound"
                         }
                     }
