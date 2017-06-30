@@ -79,13 +79,19 @@ In this task you will create a VSTS build definition that will create two contai
     Code Coverage Tool | `JaCoCo` | Selects JaCoCo as the coverage tool
     Source Files Directory | `src/main` | Sets the source files directory for JaCoCo
 
-1. Click on the "Copy Files" task. To make the war file, test jar file and the docker yml files available to releases in upcoming labs, you will want to copy them into the artifact staging directory so that the Publish step can publish them. Set the Contents property to:
+1. Click on the "Copy Files" task. Set the Contents property to:
     ```
-    target/myshuttledev*.?ar
+    target/myshuttledev*.*
     target/test-jars/*
-    config/testng.xml
-    *.yml
+    *.release.*
     ```
+
+    The Publish Build Artifacts task publishes everything in the artifact staging directory. The Copy Files task copies the following artifacts into this directory so that they are available for Release (which you will create in a later lab):
+    - **myshuttledev.war** - the site war file
+    - **myshuttledev-tests.jar** - integration test jar
+    - **target/test-jars** - dependency jars required to run the test jar
+    - **Release yml files** - for docker operations
+    - **Release xml files** - test configuration files
 
 1. Under the list of tasks, click "Add Task". Type "docker" into the search box and then click the Apply button next to the Docker Compose task.
 
@@ -114,6 +120,10 @@ In this task you will create a VSTS build definition that will create two contai
 1. You should see a successful build. Click on the build number to navigate to the summary page.
 
     ![Successful build](images/vsts-build-docker/build-success.png "Successful build")
+
+1. Click on the Artifacts link just below the build histogram to open the artifacts. Click Explore next to the `drop` artifact. Your drop should look like this:
+
+    ![Drop contents](images/vsts-build-docker/drop-contents.png "Drop contents")
 
 1. Navigate back to the Azure Portal and find your Azure Container Registry. Click on Repositories. You should see a `db` and a `web` repository. If you click on one of the repos, you will see a latest tag as well as tags for each build number.
 

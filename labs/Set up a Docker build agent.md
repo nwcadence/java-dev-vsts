@@ -68,6 +68,7 @@ In this task you will start a VSTS build agent container using Docker. This cont
     ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs && \
     ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs && \
     ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
+    RUN apt-get update && apt-get install libfontconfig -y
 
     # configure docker
     COPY .docker /root/.docker/
