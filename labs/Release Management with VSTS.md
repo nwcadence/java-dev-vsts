@@ -39,6 +39,10 @@ In this task you will create a Release Definition with a single environment call
 
 1. Click "Create Release" in the Deployment section below the Code Coverage results.
 1. A new Release Definition is created. In the flyout, click on "Empty process" at the top of the templates selection page to start with an empty template.
+1. Click on the trigger icon on the Build Artifact. In the property flyout, ensure that the Continous Deployment trigger is enabled. Set the branch filter to master so that only builds from the master branch trigger the deployment automatically.
+
+    ![Continuous Deployment trigger](images/docker-release/release-trigger.png "Continuous Deployment trigger")
+
 1. Click on Environment1 to open the properties flyout. Change the name to "AzureVM".
 
     ![Rename Environment1](images/docker-release/rename-env1.png "Rename Environment1")

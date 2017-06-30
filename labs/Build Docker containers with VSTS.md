@@ -115,6 +115,10 @@ In this task you will create a VSTS build definition that will create two contai
 
     ![Push Service Images Docker Compose task](images/vsts-build-docker/docker-compose-push-task.png "Push Service Images Docker Compose task")
 
+1. Click on Triggers. Enable the Continuous Integration trigger. Set the branch filter to * to trigger off commits to any branch.
+
+    ![Enable the CI trigger](images/vsts-build-docker/build-trigger.png "Enable the CI trigger")
+
 1. On the options page, set the queue to `default` so that your dockerized agent is the agent to run this build.
 1. Click the "Save and Queue" button to save and queue this build. Click the Queue button in the dialog and then click the link in the green bar that appears at the top to go to the live logs for the build run.
 1. You should see a successful build. Click on the build number to navigate to the summary page.
