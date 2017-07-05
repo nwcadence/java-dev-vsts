@@ -20,18 +20,18 @@ Hands on Labs
 
 The labs should be followed in the following order, though there are some equivalent labs that allow you a "choose your adventure" experience:
 
-1. [Setting up a new project on VSTS](Setting up a new project on VSTS.md)
-1. [Set up a Docker build agent](Set up a Docker build agent.md)
+1. [Setting up a new project on VSTS](Setting%20up%20a%20new%20project%20on%20VSTS.md)
+1. [Set up a Docker build agent](Set%20up%20a%20Docker%20build%20agent.md)
 1. Either:
-    1. [Cloning a VSTS Repo - IntelliJ](Cloning a VSTS Repo-IntelliJ.md) **OR**
-    1. [Cloning a VSTS Repo - Eclipse](Cloning a VSTS Repo-IntelliJ.md)
+    1. [Cloning a VSTS Repo - IntelliJ](Cloning%20a%20VSTS%20Repo-IntelliJ.md) **OR**
+    1. [Cloning a VSTS Repo - Eclipse](Cloning%20a%20VSTS%20Repo-IntelliJ.md)
 1. Either:
-    1. [Maven Package Management with VSTS and Jenkins](Maven Package Management with VSTS and Jenkins.md) **OR**
-    1. [Maven Package Management with VSTS Team Build](Maven Package Management with VSTS Team Build.md)
-1. [Build Docker containers with VSTS](Build Docker containers with VSTS.md)
-1. (Optional) [Managing Technical Debt with SonarQube and VSTS Team Build](Managing Technical Debt with SonarQube and VSTS Team Build.md)
-1. [Release Management with VSTS](Release Management with VSTS.md)
-1. (Optional) [Release Containers to ACS Kubernetes with VSTS](Release Containers to ACS Kubernetes with VSTS.md)
+    1. [Maven Package Management with VSTS and Jenkins](Maven%20Package%20Management%20with%20VSTS%20and%20Jenkins.md) **OR**
+    1. [Maven Package Management with VSTS Team Build](Maven%20Package%20Management%20with%20VSTS%20Team%20Build.md)
+1. [Build Docker containers with VSTS](Build%20Docker%20containers%20with%20VSTS.md)
+1. (Optional) [Managing Technical Debt with SonarQube and VSTS Team Build](Managing%20Technical%20Debt%20with%20SonarQube%20and%20VSTS%20Team%20Build.md)
+1. [Release Management with VSTS](Release%20Management%20with%20VSTS.md)
+1. (Optional) [Release Containers to ACS Kubernetes with VSTS](Release%20Containers%20to%20ACS%20Kubernetes%20with%20VSTS.md)
 1. Either:
-    1. [End to End Workflow - IntelliJ](End to End Workflow-IntelliJ.md)
-    1. [End to End Workflow - Eclipse](End to End Workflow-Eclipse.md)
+    1. [End to End Workflow - IntelliJ](End%20to%20End%20Workflow-IntelliJ.md)
+    1. [End to End Workflow - Eclipse](End%20to%20End%20Workflow-Eclipse.md)
