@@ -30,12 +30,13 @@ apt-get update
 apt-get install google-chrome-stable --allow-unauthenticated -y
 
 ### Install Gradle, Java, Maven, mysql-client
-apt-get install gradle -y
+apt-get install gradle maven -y
 apt-get install openjdk-8-jdk openjdk-8-jre -y
 apt-get install mysql-client -y
 
 ### Set environment variable for Java
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /home/$username/.profile
+echo "export MAVEN_HOME=/usr/share/maven" >> /home/$username/.profile
 
 ### Install UMake
 add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y

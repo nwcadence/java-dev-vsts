@@ -88,43 +88,4 @@ Connect to VSTS from IntelliJ
 
     ![Select the SDK folder](images/intellij-git/intellij-select-sdk.png "Select the SDK folder")
 
-> **Note**: The project will not currently compile, since it has a dependency on a library (MyShuttleCalc) that it cannot resolve. You will fix this in the next lab.
-
-### OPTIONAL: Create an SSH Key for Git authentication
-
-If you prefer to authenticate via SSH, you can do so with VSTS. You need to create an SSH key if you do not already have one, then upload the public key to VSTS. Then select the SSH URL for cloning repos.
-
-1. On your VM, open a terminal by clicking on the Terminal Emulator icon in the toolbar.
-
-    ![Click on the terminal icon in the Toolbar](images/intellij-git/click-terminal.png "Click on the terminal icon in the Toolbar")
-
-1. Enter the following command:
-
-```sh
-ssh-keygen -C "jdev.com"
-```
-
-and press Enter 3 times to use the default id_rsa location as well as an empty pass phrase.
-
-    ![Create an SSH key](images/intellij-git/generate-key.png "Create an SSH key")
-
-> **Note**: the domain is not important - use any value you want. You can also enter a pass phrase if you want to, though this will cause a prompt each time you use the key.
-
-1. Enter the following command to print out the public key in the terminal:
-
-```sh
-cat /home/vmadmin/.ssh/id_rsa.pub
-```
-
-1. Select all of the text (from `ssh-rsa` to `jdev.com`), right-click and select "Copy".
-
-1. Go back to Chrome and click on your profile image in the upper right. In the menu, click Security.
-
-    ![Click on Security under your Profile image](images/intellij-git/click-security.png "Click on Security under your Profile image")
-
-1. Click on "SSH public keys" and click the "Add" button.
-1. Enter "jdev" for the Description and then paste into the Key Data the contents of the public key (which should be in your clipboard).
-
-    ![Add a new public key](images/intellij-git/add-ssh-key-to-vsts.png "Add a new public key")
-
-> **Note**: Once you have your SSH credentials set up, remember to use the SSH URL when cloning repositories.
+> **Note**: The project will not currently compile, since it has a dependency on a library (MyShuttleCalc) that it cannot resolve. You will fix this in the Package Management lab.
