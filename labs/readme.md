@@ -1,4 +1,4 @@
-#Java Development on Linux with Visual Studio Team Services  
+# Java Development on Linux with Visual Studio Team Services  
 
 Overview and Creating the VM
 ----------------------------
