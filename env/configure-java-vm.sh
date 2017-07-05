@@ -62,11 +62,6 @@ apt-get install gnome-terminal -y
 cd /mnt
 git clone https://github.com/nwcadence/java-dev-vsts.git
 
-##****TEMP FOR V2 branch
-cd /mnt/java-dev-vsts
-git checkout v2
-##****TEMP FOR V2 branch
-
 cp -r /mnt/java-dev-vsts/env/config-template/* /home/$username/.config
 find /home/$username/.config -type f -exec sed -i "s/__USERNAME__/$username/g" {} +
 chown -R $username /home/$username/.config/*

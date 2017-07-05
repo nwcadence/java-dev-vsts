@@ -31,21 +31,7 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
     The resources will be deployed to a Resource Group. You can delete the resource group in order to remove all the created resources at any time.
 
-1. Specify settings for the deployment
-
-	Provide a Resource Group
-
-	Provide a public DNS name
-
-	Provide a username
-	
-	Provide a password
-
-1. Check the Resource Group in the Azure Portal
-    When the deployment completes, you should see the following resources in the Azure Portal:
-
-    ![](images/resources.png)
-
+	The VM will take a few minutes (~20) to complete. The VM is installing required software and configuring the environment for the labs.
 
 ## Start the Labs
-We've recorded some short videos that intro each lab. Check out this [playlist on YouTube](https://youtu.be/O1UTj-wZr3k?list=PLu1D89Nlvq9hUaf-wdBXVcKfQiqY7Y0AI).
+Once the VM has been provisioned, remote desktop to the machine and log in. You can then [start the labs](labs/readme.md).
