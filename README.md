@@ -35,3 +35,17 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 ## Start the Labs
 Once the VM has been provisioned, remote desktop to the machine and log in. You can then [start the labs](labs/readme.md).
+
+1. Get the IP address/DNS name of the machine.
+
+In the Azure portal, select the VM to view details about it in the Overview panel and copy the Public IP address (optionally, copy the DNS name instead).
+
+<img src ="images/azure-copy-ipaddress.png">
+
+1. Remote into the machine in Windows.
+
+If accessing the VM from a Windows machine, paste in the IP address/DNS name into a Remote Desktop Connection window followed by a colon and the 3389 port. This will allow you to view the GUI of the Linux VM desktop.
+
+<img src ="images/rdp-connect-vm.png">
+
+In the RDP session, you will need to put your credentials set earlier to log into the machine. 
