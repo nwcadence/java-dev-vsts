@@ -239,7 +239,7 @@ openssl genrsa \
   -out server-key.pem $STR
 
 openssl req \
-  -subj "/CN=$HOSTNAME.$azureregion.cloudapp.azure.com" \
+  -subj "/CN=$HOSTNAME" \
   -new \
   -key server-key.pem \
   -out server.csr
@@ -292,7 +292,7 @@ sed -e "s/-H fd:\/\///g" -i /lib/systemd/system/docker.service
 systemctl daemon-reload
 
 # set default environment variables
-echo "export DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376" >> /home/$username/.profile
+echo "export DOCKER_HOST=tcp://$HOSTNAME:2376" >> /home/$username/.profile
 echo "export DOCKER_TLS_VERIFY=1" >> /home/$username/.profile
 
 popd
