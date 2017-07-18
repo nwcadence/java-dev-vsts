@@ -6,7 +6,7 @@
 ################################################################
 
 ### Validate parameters
-if [[ !("$#" -eq 2) ]]; 
+if [[ !("$#" -eq 3) ]]; 
     then echo "Parameters missing for java vm configuration." >&2
     exit 1
 fi
@@ -14,6 +14,7 @@ fi
 ### Get parameters
 username=$1
 azureregion=$2
+branch=$3
 
 
 ################################################################
@@ -61,6 +62,9 @@ apt-get install gnome-terminal -y
 
 cd /mnt
 git clone https://github.com/nwcadence/java-dev-vsts.git
+
+cd /mnt/java-dev-vsts
+git checkout $branch
 
 cp -r /mnt/java-dev-vsts/env/config-template/* /home/$username/.config
 find /home/$username/.config -type f -exec sed -i "s/__USERNAME__/$username/g" {} +
@@ -298,6 +302,19 @@ popd
 usermod -aG docker $username
 
 ####################################
+# Configure PhantomJS on VM
+
+echo "Configuring PhantomJS..."
+echo "-----------------------------------"
+PHANTOM='phantomjs-2.1.1-linux-x86_64'
+curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2
+tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
+####################################
+
+####################################
 # Customize the docker vsts image
 
 echo "Customizing VSTS Agent image..."
@@ -309,7 +326,6 @@ cat >~/docker/vstsagent/Dockerfile  <<EOF
 FROM microsoft/vsts-agent
 
 # install phantomjs
-ARG PHANTOM=phantomjs-2.1.1-linux-x86_64
 RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2 && \
   tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share && \
   ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs && \
@@ -325,19 +341,6 @@ EOF
 # build the image
 echo "----building image------------"
 docker build -t vsts/agent:latest ~/docker/vstsagent
-####################################
-
-####################################
-# Configure PhantomJS on VM
-
-echo "Configuring PhantomJS..."
-echo "-----------------------------------"
-PHANTOM='phantomjs-2.1.1-linux-x86_64'
-curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2
-tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share
-ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs
-ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs
-ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
 ####################################
 
 ################################################################
