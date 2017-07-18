@@ -302,6 +302,19 @@ popd
 usermod -aG docker $username
 
 ####################################
+# Configure PhantomJS on VM
+
+echo "Configuring PhantomJS..."
+echo "-----------------------------------"
+PHANTOM='phantomjs-2.1.1-linux-x86_64'
+curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2
+tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs
+ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
+####################################
+
+####################################
 # Customize the docker vsts image
 
 echo "Customizing VSTS Agent image..."
@@ -313,7 +326,6 @@ cat >~/docker/vstsagent/Dockerfile  <<EOF
 FROM microsoft/vsts-agent
 
 # install phantomjs
-ARG PHANTOM=phantomjs-2.1.1-linux-x86_64
 RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2 && \
   tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share && \
   ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs && \
@@ -329,19 +341,6 @@ EOF
 # build the image
 echo "----building image------------"
 docker build -t vsts/agent:latest ~/docker/vstsagent
-####################################
-
-####################################
-# Configure PhantomJS on VM
-
-echo "Configuring PhantomJS..."
-echo "-----------------------------------"
-PHANTOM='phantomjs-2.1.1-linux-x86_64'
-curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $PHANTOM.tar.bz2
-tar xvjf $PHANTOM.tar.bz2 -C /usr/local/share
-ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs
-ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs
-ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
 ####################################
 
 ################################################################
