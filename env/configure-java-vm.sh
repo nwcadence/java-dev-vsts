@@ -244,7 +244,7 @@ openssl req \
   -key server-key.pem \
   -out server.csr
 
-echo "subjectAltName = DNS:$HOSTNAME.$azureregion.cloudapp.azure.com,IP:127.0.0.1,IP:10.0.0.4" > extfile.cnf
+echo "subjectAltName = DNS:$HOSTNAME.$azureregion.cloudapp.azure.com,DNS:$HOSTNAME,IP:127.0.0.1,IP:10.0.0.4" > extfile.cnf
 openssl x509 \
   -req \
   -days 3650 \
