@@ -18,6 +18,10 @@
         },
         "adminPassword": {
             "type": "securestring"
+        },
+        "branch": {
+            "type": "string",
+            "defaultValue": "master"
         }
     },
     "variables": {
@@ -210,11 +214,11 @@
                     },
                     "fileUris": {
                         "value": [
-                            "https://raw.githubusercontent.com/nwcadence/java-dev-vsts/master/env/configure-java-vm.sh"
+                            "[concat('https://raw.githubusercontent.com/nwcadence/java-dev-vsts/', parameters('branch'), '/env/configure-java-vm.sh')]"
                         ]
                     },
                     "commandToExecute": {
-                        "value": "[concat('bash configure-java-vm.sh ', parameters('adminUsername'), ' ', resourceGroup().location)]"
+                        "value": "[concat('bash configure-java-vm.sh ', parameters('adminUsername'), ' ', resourceGroup().location, ' ', parameters('branch'))]"
                     }
                 }
             },

@@ -6,7 +6,7 @@
 ################################################################
 
 ### Validate parameters
-if [[ !("$#" -eq 2) ]]; 
+if [[ !("$#" -eq 3) ]]; 
     then echo "Parameters missing for java vm configuration." >&2
     exit 1
 fi
@@ -14,6 +14,7 @@ fi
 ### Get parameters
 username=$1
 azureregion=$2
+branch=$3
 
 
 ################################################################
@@ -61,6 +62,9 @@ apt-get install gnome-terminal -y
 
 cd /mnt
 git clone https://github.com/nwcadence/java-dev-vsts.git
+
+cd /mnt/java-dev-vsts
+git checkout $branch
 
 cp -r /mnt/java-dev-vsts/env/config-template/* /home/$username/.config
 find /home/$username/.config -type f -exec sed -i "s/__USERNAME__/$username/g" {} +
