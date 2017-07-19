@@ -8,20 +8,39 @@
                 "description": "Globally unique DNS Name for the Public IP used to access the Java Dev Virtual Machine."
             }
         },
-        "virtualMachineSize": {
-            "type": "string",
-            "defaultValue": "Standard_D1_v2"
-        },
         "adminUsername": {
             "type": "string",
-            "defaultValue": "vmadmin"
+            "defaultValue": "vmadmin",
+            "metadata": {
+                "description": "Username for the account to be provisioned." 
+            }
         },
         "adminPassword": {
-            "type": "securestring"
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for the account to be provisioned." 
+            }
+        },
+        "acceptLicenseTerms": {
+            "type": "string",
+            "allowedValues": ["Yes"],
+            "metadata": {
+                "description": "Do you accept license terms of all software installed as part of the provisioning script?" 
+            }
+        },
+        "virtualMachineSize": {
+            "type": "string",
+            "defaultValue": "Standard_D1_v2",
+            "metadata": {
+                "description": "Size of the Virtual Machine to create." 
+            }
         },
         "branch": {
             "type": "string",
-            "defaultValue": "master"
+            "defaultValue": "master",
+            "metadata": {
+                "description": "Branch override parameter to allow for easy testing and validation of provisioning script changes." 
+            }
         }
     },
     "variables": {
@@ -178,20 +197,6 @@
                                 "priority": 1100,
                                 "direction": "Inbound"
                             }
-                    },
-                    {
-                        "name": "allow-http-8080",
-                        "properties": {
-                            "description": "HTTP port",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "8080",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 1200,
-                            "direction": "Inbound"
-                        }
                     }
                 ]
             }

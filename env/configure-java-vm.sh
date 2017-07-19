@@ -239,12 +239,12 @@ openssl genrsa \
   -out server-key.pem $STR
 
 openssl req \
-  -subj "/CN=$HOSTNAME.$azureregion.cloudapp.azure.com" \
+  -subj "/CN=$HOSTNAME" \
   -new \
   -key server-key.pem \
   -out server.csr
 
-echo "subjectAltName = DNS:$HOSTNAME.$azureregion.cloudapp.azure.com,IP:127.0.0.1,IP:10.0.0.4" > extfile.cnf
+echo "subjectAltName = DNS:$HOSTNAME,DNS:$HOSTNAME.$azureregion.cloudapp.azure.com,IP:127.0.0.1,IP:10.0.0.4" > extfile.cnf
 openssl x509 \
   -req \
   -days 3650 \
@@ -292,7 +292,7 @@ sed -e "s/-H fd:\/\///g" -i /lib/systemd/system/docker.service
 systemctl daemon-reload
 
 # set default environment variables
-echo "export DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376" >> /home/$username/.profile
+echo "export DOCKER_HOST=tcp://$HOSTNAME:2376" >> /home/$username/.profile
 echo "export DOCKER_TLS_VERIFY=1" >> /home/$username/.profile
 
 popd
@@ -335,7 +335,7 @@ RUN apt-get update && apt-get install libfontconfig -y
 
 # configure docker
 COPY .docker /root/.docker/
-ENV DOCKER_HOST=tcp://$HOSTNAME.$azureregion.cloudapp.azure.com:2376 DOCKER_TLS_VERIFY=1
+ENV DOCKER_HOST=tcp://$HOSTNAME:2376 DOCKER_TLS_VERIFY=1
 EOF
 
 # build the image
