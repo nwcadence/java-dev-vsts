@@ -30,7 +30,7 @@
         },
         "virtualMachineSize": {
             "type": "string",
-            "defaultValue": "Standard_D1_v2",
+            "defaultValue": "Standard_D2_v2",
             "metadata": {
                 "description": "Size of the Virtual Machine to create." 
             }
