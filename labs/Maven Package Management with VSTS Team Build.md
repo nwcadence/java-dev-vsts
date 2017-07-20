@@ -136,12 +136,12 @@ In this task you will create a build that will publish the MyShuttleCalc library
 
 1. Click on Tasks. Click on the Maven task. Edit the following settings:
 
-| Field | Value | Notes |
-|---|---|---|
-| Options | `--settings ./maven/settings.xml` | Required to authenticate when pushing the Maven package to the feed. |
-| Goal(s) | `deploy -Dbuildversion=$(Build.BuildNumber)` | Tell Maven to publish the package |
-| Code Coverage Tool | `JaCoCo` | Change the code coverage format |
-| Source Files Directory | `src/main` | These files must be included in the coverage results |
+    | Field | Value | Notes |
+    |---|---|---|
+    | Options | `--settings ./maven/settings.xml` | Required to authenticate when pushing the Maven package to the feed. |
+    | Goal(s) | `deploy -Dbuildversion=$(Build.BuildNumber)` | Tell Maven to publish the package, passing in the build number |
+    | Code Coverage Tool | `JaCoCo` | Change the code coverage format |
+    | Source Files Directory | `src/main` | These files must be included in the coverage results |
 
     ![Maven task options](images/packagemanagement/maven-task-opts.png "Maven task options")
 
