@@ -13,7 +13,7 @@ This exercise assumes you have completed the exercises to create a Team Project 
 Clone the Repo and Configure Package Management
 -----------------------------------------------
 
-Before getting to the build, you will need to clone the code from Github into VSTS, create the Maven Package Feed and then update the Maven settings file in the project to specify where to publish the package to. All these instructions are in the [Maven Package Management with VSTS and Jenkins](./Maven Package Management with VSTS and Jenkins,md). Please complete the following exercises from that lab:
+Before getting to the build, you will need to clone the code from Github into VSTS, create the Maven Package Feed and then update the Maven settings file in the project to specify where to publish the package to. All these instructions are in the [Maven Package Management with VSTS Team Build](./Maven%20Package%20Management%20with%20VSTS%20Team%20Build.md). Please complete the following exercises from that lab:
 
 - Importing the MyShuttleCalc code from Github into VSTS
 - Create a Maven Package Feed
