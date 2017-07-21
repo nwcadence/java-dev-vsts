@@ -4,7 +4,7 @@ In this exercise, you are going to clone a Github repo into VSTS. This repo cont
 
 This exercise assumes you have completed the exercises to create a Team Project and have set up the Docker private VSTS agent. This exercise uses a team project named **jdev**, though your team project name may differ.
 
-> **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hoster)  repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
+> **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hosted)  repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
 
 > **Note**: This exercise shows how to do a Maven build using just VSTS. To see how to perform a Maven build using Jenkins that still integrates into the VSTS Package Feed, please refer to [Maven Package Management with VSTS Team Build](./Maven Package Management with VSTS Team Build,md).
 
@@ -45,7 +45,7 @@ Clone the MyShuttleCalc repo
 ----------------------------
 In this task you will clone the MyShuttleCalc repo. This repo contains a Maven package settings file that you will need to authenticate to the Maven feed. If you have already done so, skip this step.
 
-1. Click on the IntelliJ icon in the toolbar to open IntellJ IDEA.
+1. Click on the IntelliJ icon in the toolbar to open IntelliJ IDEA.
 
     ![Click IntelliJ in the Toolbar](images/packagemanagement/click-intellij.png "Click IntelliJ in the Toolbar")
 

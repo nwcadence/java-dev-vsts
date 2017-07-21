@@ -74,7 +74,7 @@ In this task you will start a VSTS build agent container using Docker. This cont
     ENV DOCKER_HOST=tcp://$HOSTNAME:2376 DOCKER_TLS_VERIFY=1
     ```
 
-    > **Note**: `$HOSTNAME` and `$azureregion` are variables that resolve in the setup script that executed when you set up your Azure VM.
+    > **Note**: `$HOSTNAME` is a variable that resolves in the setup script that executed when you set up your Azure VM.
 
 1. If your container stops running for some reason, you can run the following commands to restart and attach to it:
 

@@ -1,6 +1,6 @@
 ## Building Docker Containers with VSTS
 
-In this exercise, you are going to create a Docker Registry in Azure as well as a VSTS build that will build two Docker cotainer images and publish then to the registry. In a later lab you will configure a Release in VSTS to run the containers.
+In this exercise, you are going to create a Docker Registry in Azure as well as a VSTS build that will build two Docker container images and publish then to the registry. In a later lab you will configure a Release in VSTS to run the containers.
 
 This exercise assumes you have completed the exercises to create a Team Project and have set up the Docker private VSTS agent. You should also have set up Maven package management and have a MyShuttleCalc package in the feed. This exercise uses a team project named **jdev**, though your team project name may differ.
 

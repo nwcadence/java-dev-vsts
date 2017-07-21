@@ -35,14 +35,14 @@ Creating your Visual Studio Team Services account
 
     <img src="./images/project/image2.png" width="624" height="294" />
 
-1.  The site redirects you to a log in page like the following if you’re
+6.  The site redirects you to a log in page like the following if you’re
     not already logged in (If you don’t see the following screen
     continue to the next step). Enter your e-mail address for your
     Microsoft account and its password and click **Sign in**.
 
     <img src="./images/project/image3.png" width="452" height="258" />
 
-1.  Once you’ve logged in, you might be greeted with a page (*if not,
+7.  Once you’ve logged in, you might be greeted with a page (*if not,
     jump to the next step*), like the following, that will allow you
     to confirm your **display name**, **contact e-mail**, and your
     **country/region**. Once you set this information, you can change
@@ -82,7 +82,7 @@ Creating your Visual Studio Team Services account
     experience. What you see can and will vary if it is your first time
     accessing Visual Studio Team Services or not.
 
-1.  On the right of the **My Information** page find the **Create a free
+8.  On the right of the **My Information** page find the **Create a free
     account now** link and click it.
 
     <img src="./images/project/image5.png" width="624" height="263" />
@@ -93,18 +93,18 @@ Creating your Visual Studio Team Services account
 
     <img src="./images/project/image6.png" width="468" height="208" />
 
-1.  Enter a value in the **Account URL** field. It is possible you might
+9.  Enter a value in the **Account URL** field. It is possible you might
     have to try a couple different names.
 
-2.  Click the **Change Options** link.
+10.  Click the **Change Options** link.
 
     <img src="./images/project/image7.png" width="279" height="205" />
 
-1.  Select the appropriate region.
+11.  Select the appropriate region.
 
     <img src="./images/project/image8.png" width="285" height="191" />
 
-1.  Click the **Create Account** button.
+12.  Click the **Create Account** button.
 
     If you have picked an account name in use, you will receive a warning.
     Pick a different name and try again.
@@ -112,45 +112,45 @@ Creating your Visual Studio Team Services account
     Creating a new account is typically fast and can take as little as a few
     seconds to complete. 
     
-1. Once done, you will be directed to the **Create
+13. Once done, you will be directed to the **Create
     your first project** page that helps you create your first Team Project.
     Continue to the steps after the following screen shot to fill in the
     details.
 
     <img src="./images/project/image9.png" width="624" height="360" />
 
-1.  Enter **jdev** in the **Project name** field for your Team Project.
+14.  Enter **jdev** in the **Project name** field for your Team Project.
     If you use **jdev** while you are doing in this lab, your screen
     will match the screen shots and instructions here.
 
-2.  Select the **Scrum** process template. *This is required*.
+15.  Select the **Scrum** process template. *This is required*.
 
-3.  Select **Git** for Version Control. *This is also required*.
+16.  Select **Git** for Version Control. *This is also required*.
 
-4.  If you are provided the option, place a check next to **Create a
+17.  If you are provided the option, place a check next to **Create a
     README.md file to describe the project**. If you do not get the
     option, there is nothing to worry about. Just continue.
 
     <img src="./images/project/image10.png" width="397" height="212" />
 
-1.  Click **Create Project**.
+18.  Click **Create Project**.
 
     Visual Studio Team Services queues up a job to build your Team
     Project and, once again, in as little as a few seconds, you will
     have a new Team Project.
 
-2.  Once done, you should be at your CODE hub in your Team Project.
+19.  Once done, you should be at your CODE hub in your Team Project.
     Continue reading if you don’t see a screen like below.
 
     <img src="./images/project/image11.png" width="624" height="167" />
 
-1.  If you don’t see the CODE hub but instead see a dialog like the
+20.  If you don’t see the CODE hub but instead see a dialog like the
     following, click **Add code**. If you just see your Team Project’s
     home page, click the CODE hub link and continue.
 
     <img src="./images/project/image12.png" width="402" height="229" />
 
-1.  If your CODE hub looks a bit different than the figure from earlier
+21.  If your CODE hub looks a bit different than the figure from earlier
     (usually because you don’t have a README.md), click the **Create a
     ReadMe file** button. Once you’ve done this, you’re ready to
     continue on.
@@ -159,5 +159,5 @@ Creating your Visual Studio Team Services account
 
 Now you’re going to manage your backlog with Visual Studio Team
 Services. You can read more about account creation and more at
-<https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online>
+<https://www.visualstudio.com/en-us/docs/setup-admin/team-services/connect-to-visual-studio-team-services>
 

@@ -39,7 +39,7 @@ In this task you will create a Release Definition with a single environment call
 
 1. Click "Create Release" in the Deployment section below the Code Coverage results.
 1. A new Release Definition is created. In the flyout, click on "Empty process" at the top of the templates selection page to start with an empty template.
-1. Click on the trigger icon on the Build Artifact. In the property flyout, ensure that the Continous Deployment trigger is enabled. Set the branch filter to master so that only builds from the master branch trigger the deployment automatically.
+1. Click on the trigger icon on the Build Artifact. In the property flyout, ensure that the Continuous Deployment trigger is enabled. Set the branch filter to master so that only builds from the master branch trigger the deployment automatically.
 
     ![Continuous Deployment trigger](images/docker-release/release-trigger.png "Continuous Deployment trigger")
 
@@ -59,7 +59,7 @@ In this task you will create a Release Definition with a single environment call
     Source Path | `$(System.DefaultWorkingDirectory)/MyShuttle2/drop` | The path in which to search for tokenized files
     Target File Pattern | `*.release.*` | The filepattern to use to find tokenized files in the Source Path
 
-    > **Note**: There are 2 tokenized files that the release will take advantage of, both of which live in the root of the MyShuttle2 repo. The build process published these files so that they are available as outputs of the build, ready for use in the Release process. `docker-compose.release.yml` contains tokens for the host port, container image names and tags.  `testng.release.xml` contains tokens for the baseUrl to test. These tokenized files make it possible to "Build Once, Deploy Many Times" since they separete the environment configuration and the binaries from the build. The Replace Tokens task inject release variables (which you will define shortly) into the tokens in the files.
+    > **Note**: There are 2 tokenized files that the release will take advantage of, both of which live in the root of the MyShuttle2 repo. The build process published these files so that they are available as outputs of the build, ready for use in the Release process. `docker-compose.release.yml` contains tokens for the host port, container image names and tags.  `testng.release.xml` contains tokens for the baseUrl to test. These tokenized files make it possible to "Build Once, Deploy Many Times" since they separate the environment configuration and the binaries from the build. The Replace Tokens task inject release variables (which you will define shortly) into the tokens in the files.
 
 1. Click the "+" icon on the phase to add a new task. Type "docker" in the search box. Add a "Docker Compose" task.
 1. Set the following properties for the Docker Compose task:

@@ -1,14 +1,14 @@
 ## IntelliJ - Working with Git
 
-In this exercise, you are going to clone a Github repo into VSTS and then open clone it to your VM for editing in IntelliJ.
+In this exercise, you are going to clone a Github repo into VSTS and then open it in your VM for editing in IntelliJ.
 This exercise assumes you have completed Exercise 1, and have created a Team Project that uses Git for version control. This exercise uses a team project named **jdev**, though your team project name may differ.
 
-> **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hoster) repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
+> **Note**: It is not necessary to clone GitHub repos into VSTS. VSTS will work just fine with GitHub (or other Git hosted) repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
 
-Importing a Github Repo into VSTS
+Importing a GitHub Repo into VSTS
 ---------------------------------
 
-In this task you will import code from a Github repo into VSTS.
+In this task you will import code from a GitHub repo into VSTS.
 
 1. Connect to the virtual machine with the user credentials which you specified when creating the VM in Azure.
 1. Open Chrome and browse to `http://<youraccount>.visualstudio.com` (where `youraccount` is the account you created in VSTS).
@@ -32,7 +32,7 @@ Connect to VSTS from IntelliJ
 
     ![Click IntelliJ in the Toolbar](images/intellij-git/click-intellij.png "Click IntelliJ in the Toolbar")
 
-1. The first time you run IntelliJ, it will prompt for theme settings. Click on "Skip All and Set Defaults" to use the defaults.
+1. The first time you run IntelliJ, it will prompt for IntelliJ settings and theme settings. Click on "Do not import settings," then click on "Skip All and Set Defaults" to use the defaults.
 
     ![Accept the default IntelliJ theme](images/intellij-git/intellij-defaults.png "Accept the default IntelliJ theme")
 
