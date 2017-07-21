@@ -186,8 +186,6 @@ In this task you will configure a VSTS Team Build in VSTS that will trigger the 
     ![Download artifacts task](images/jenkins-build/download-artifacts.png "Download artifacts task")
 
 1. Insert a "Publish Test Results" task and configure it as follows:
-    Parameter | Value | Notes
-    --- | --- | ---
 
     | Parameter | Value | Notes |
     | --------------- | ---------------------------- | ------------------------------------- |
