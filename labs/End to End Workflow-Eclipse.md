@@ -1,5 +1,9 @@
 ## TODO: Add a scenario for end-to-end demo
 
+Not yet complete! Feel free to copy the IntelliJ lab, modify and conduct a pull request!  It would be greatly appreciated!
+
+Here a rough outline of what you'd be doing.
+
 Create Branch Policy
 --------------------
 1. Open VSTS
