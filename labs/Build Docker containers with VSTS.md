@@ -48,9 +48,9 @@ In this task you will update the pom.xml file for the MyShuttle2 application so 
 1. Click Build->Build Project and make sure there are no errors.
 1. Copy the maven settings file from the MyShuttleCalc project (you updated this file in another lab to include the authentication settings for the Maven package feed). Run the following command in a terminal:
 
-```sh
-cp ~/MyShuttleCalc/maven/settings.xml ~/MyShuttle2/maven/
-```
+    ```sh
+    cp ~/MyShuttleCalc/maven/settings.xml ~/MyShuttle2/maven/
+    ```
 
 1. Click VCS->Commit. Add a commit message "Updating feed settings". Click the drop-down on the Commit button and select Commit and Push. Click Push on the prompt.
 
