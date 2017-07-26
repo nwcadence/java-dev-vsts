@@ -77,27 +77,6 @@ Add a Server and enter your credentials.  If you get the credentials wrong you c
 
     ![Select the VSTS repo](images/eclipse-git/eclipse-select-repo2.png "Select the VSTS repo")
 
-    ![Select the VSTS repo](images/eclipse-git/eclipse-select-repo2.png "Select the VSTS repo")
-
-
-
-
-1. Press "Alt-1" to open the Project View.
-1. Expand `src\main\java\com.microsoft.example` and click on "DataAccess" to open the DataAccess class.
-1. A yellow warning appears in the main editor window prompting you to "Setup SDK". Click on the link.
-
-    ![Setup the JDK for the project](images/eclipse-git/eclipse-setup-sdk.png "Setup the JDK for the project")
-
-1. In the Select Project SDK dialog, click "Configure..."
-
-    ![Click on Configure](images/eclipse-git/eclipse-jdk-configure.png "Click on Configure")
-
-1. In the upper left, click the green "+" icon to add a new SDK.
-
-    ![Add an SDK](images/eclipse-git/eclipse-add-sdk.png "Add an SDK")
-
-1. Select `java-8-openjdk-amd64` from the folder list and click OK. Click OK back through the rest of the dialogs.
-
-    ![Select the SDK folder](images/eclipse-git/eclipse-select-sdk.png "Select the SDK folder")
+    ![Select the VSTS repo](images/eclipse-git/eclipse-select-repo3.png "Select the VSTS repo")
 
 > **Note**: The project will not currently compile, since it has a dependency on a library (MyShuttleCalc) that it cannot resolve. You will fix this in the Package Management lab.
