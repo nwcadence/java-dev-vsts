@@ -17,11 +17,6 @@ In this task you will create a Generic SonarQube Endpoint in VSTS. This endpoint
     ![Log in to SonarQube](images/sonarqube/login.png "Log in to SonarQube")
 
 1. Log in as the administrator using username `admin` and password `admin`.
-1. Click on the profile icon (the "A") in the upper right of the toolbar. Click "My Account" to open your account settings. Click on the Security tab, and enter VSTS in the Generate New Token textbox. Click Generate.
-
-    ![Generate a Sonarqube token](images/sonarqube/create-token.png "Generate a Sonarqube token")
-
-1. Click Copy to copy the token into the clipboard.
 1. Open a new tab in Chrome and browse to `http://<youraccount>.visualstudio.com` (where `youraccount` is the account you created in VSTS).
 1. Click on the `jdev` team project to navigate to it.
 1. Click on the gear icon and select Services to navigate to the service endpoint configuration page. Click "+ New Service Endpoint" and select Generic from the list of options. Enter the following information and click OK.
