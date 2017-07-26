@@ -5,8 +5,6 @@ This exercise assumes you have completed Exercise 1, and have created a Team Pro
 
 > **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hoster) repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
 
-**TODO HERE:**
-
 Importing a Github Repo into VSTS
 ---------------------------------
 
