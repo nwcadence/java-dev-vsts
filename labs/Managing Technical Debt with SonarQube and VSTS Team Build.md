@@ -1,4 +1,4 @@
-## Maven Package Management with Visual Studio Team Services
+## Manage technical debt with SonarQube and VSTS Team Build
 
 In this exercise, you are going to configure integration between the build system and SonarQube. Sonarqube is a well established technical debt management system. Keeping tabs on your technical debt gives you objective measures that you can use to make informed decisions about maintenance, refactoring and enhancements to your code base.
 
@@ -104,7 +104,10 @@ In this task you will update a quality gate in SonarQube and see that failing th
 
     ![Failing quality gates fails the build](images/sonarqube/quality-gate-fail.png "Failing quality gates fails the build")
 
-1. Go back to SonarQube and edit the Quality Gate that you just modified. Clear the Error value so that you only get a warning if the coverage < 50% instead of failing the build.
+1. Go back to SonarQube and edit the Quality Gate that you just modified. Clear the Error value so that you only get a warning if the coverage < 50% instead of failing the build, then click the update button. Additionally, under the Coverage on New Code metric, move the 80% to a warning message instead of error and update. In the Reliability Rating on New Code metric, change the error threshold from A to blank (click on the "X" next to the A), then click on update. 
+
+    ![Update Quality Gates in SonarQube](images/sonarqube/update-qualitygates.png "Update Quality Gates in SonarQube")
+
 1. Queue a new build and see that now the build succeeds, but there is a Quality Gate warning.
 
     ![Quality gate warning](images/sonarqube/quality-gate-warn.png "Quality gate warning")

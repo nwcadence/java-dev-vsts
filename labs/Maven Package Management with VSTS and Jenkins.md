@@ -1,4 +1,4 @@
-## Maven Package Management with Visual Studio Team Services
+## Maven Package Management with VSTS and Jenkins
 
 In this exercise, you are going to clone a GitHub repo into VSTS, if you have not already done so. This repo contains a class library (MyShuttleCalc) that is used by the MyShuttle2 application. You will configure a Jenkins build to get the source code from the VSTS repo, build and then publish the MyShuttleCalc package to a VSTS Maven Package feed so that it can be consumed by MyShuttle2 and any other applications that require the calculation code.
 

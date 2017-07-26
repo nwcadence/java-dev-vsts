@@ -1,4 +1,4 @@
-## Building Docker Containers with VSTS
+## Release Management with VSTS
 
 In this exercise, you are going to create a Release Definition that will start the container images from the build lab. You will then create an Azure Container Service (ACS) and modify the Release to start containers in ACS.
 

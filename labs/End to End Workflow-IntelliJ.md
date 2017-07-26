@@ -110,7 +110,7 @@ In this task you will create a branch of the code to fix the Bug. You will then 
 
     ![Notifications when creating a branch](images/e2e-intellij/branch-notifications.png "Notifications when creating a branch")
 
-1. In the project view, browse to serc/main/java/com.microsoft.example/servlet and open the LoginServlet class.
+1. In the project view, browse to src/main/java/com.microsoft.example/servlet and open the LoginServlet class.
 1. Around line 35, you will see what is causing the bug: the `totalDriverFee` is being calculated but the `driverFeeTotal` session attribute is being set to `totalFareForDriver` (this looks like a classic copy/paste error).
 
     Change this line of code:
