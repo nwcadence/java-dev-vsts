@@ -41,11 +41,10 @@ In this task you will create a Maven package feed. You will publish packages to 
 
 You now have a feed that you can publish package to.
 
-Clone the MyShuttleCalc repo - Choose <span style="color:#f88;">IntelliJ</span> or <span style="color:#8f8;">Eclipse</span> Path
+Clone the MyShuttleCalc repo - Choose IntelliJ or Eclipse Path
 ----------------------------
 In this task you will clone the MyShuttleCalc repo. This repo contains a Maven package settings file that you will need to authenticate to the Maven feed. If you have already done so, skip this step.
-- <span style="color:#f00; font-size: 1.8em;">IntelliJ Path</span>
-<span style="color:#f88;">    
+- IntelliJ Path    
     1. Click on the IntelliJ icon in the toolbar to open IntellJ IDEA.
     
         ![Click IntelliJ in the Toolbar](images/packagemanagement/click-intellij.png "Click IntelliJ in     the Toolbar")
@@ -65,9 +64,8 @@ In this task you will clone the MyShuttleCalc repo. This repo contains a Maven p
         ![Select the VSTS repo](images/packagemanagement/intellij-select-repo.png "Select the VSTS     repo")
     
     1. IntelliJ detects a Maven project file (pom.xml) and asks if you want to open it. Click "Yes" to     open the project.
-</span>
-- <span style="color:#0f0; font-size: 1.8em;">Eclipse Path</span>    
-<span style="color:#8f8;">
+
+- Eclipse Path    
     1. Click on the Eclipse icon in the toolbar to open the Eclipse Java IDE.
     
         ![Click Eclipse in the Toolbar](images/packagemanagement/click-eclipse.png "Click Eclipse in     the Toolbar")
@@ -85,7 +83,6 @@ In this task you will clone the MyShuttleCalc repo. This repo contains a Maven p
         ![Checkout from Team Services Git](images/packagemanagement/eclipse-select-repo2.png     "Checkout from Team Services Git")
 
     1. IntelliJ detects a Maven project file (pom.xml) and asks if you want to open it. Click "Yes" to open the project.
-</span>    
 
 Create a Maven Settings File with the Feed Credentials
 ------------------------------------------------------
@@ -123,21 +120,21 @@ In this task you will create credentials for the Maven feed. You will then creat
     > **Note**: If this is your first commit to VSTS, you will be prompted to update your display name and email address for the repo. These are simply for display purposes, but usually are matched to your VSTS profile.
 
     
-    <span style="color:#f88;">IntelliJ
-    - <span style="color:#f88;">Click VCS->Commit Changes to commit your changes to the repo.
+    IntelliJ
+    - Click VCS->Commit Changes to commit your changes to the repo.
 
         ![Commit changes](images/packagemanagement/vcs-commit.png "Commit changes")
     
-    - <span style="color:#f88;">Enter "Adding maven credentials" to the commit message.
-    - <span style="color:#f88;">Click the drop-down next to the Commit button and select "Commit and Push".
+    - Enter "Adding maven credentials" to the commit message.
+    - Click the drop-down next to the Commit button and select "Commit and Push".
 
-    <span style="color:#8f8;">Eclipse
-    - <span style="color:#8f8;">Right Click pom.xml->Team->Commit.
+    Eclipse
+    - Right Click pom.xml->Team->Commit.
 
         ![Commit changes](images/packagemanagement/vcs-commit-eclipse.png "Commit changes")
     
-    - <span style="color:#8f8;">Enter "Adding maven credentials" to the commit message.
-    - <span style="color:#8f8;">Click "Commit and Push".
+    - Enter "Adding maven credentials" to the commit message.
+    - Click "Commit and Push".
 
 1. Copy the maven settings file to the .m2 directory so that local Maven operations will succeed by running the following command in a terminal:
 
