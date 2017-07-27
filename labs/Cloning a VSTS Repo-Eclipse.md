@@ -26,7 +26,7 @@ In this task you will import code from a Github repo into VSTS.
 Connect to VSTS from Eclipse
 -----------------------------
 
-1. Click on the Eclipse icon in the toolbar to open the whichEclipse Java IDE.
+1. Click on the Eclipse icon in the toolbar to open the Eclipse Java IDE.
 
     ![Click Eclipse in the Toolbar](images/eclipse-git/click-eclipse.png "Click Eclipse in the Toolbar")
 

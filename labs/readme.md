@@ -24,7 +24,7 @@ The labs should be followed in the following order, though there are some equiva
 1. [Set up a Docker build agent](Set%20up%20a%20Docker%20build%20agent.md)
 1. Either:
     1. [Cloning a VSTS Repo - IntelliJ](Cloning%20a%20VSTS%20Repo-IntelliJ.md) **OR**
-    1. [Cloning a VSTS Repo - Eclipse] (Cloning%20a%20VSTS%20Repo-Eclipse.md) (not complete - submit a pull request!)
+    1. [Cloning a VSTS Repo - Eclipse](Cloning%20a%20VSTS%20Repo-Eclipse.md)
 1. Either:
     1. [Maven Package Management with VSTS and Jenkins](Maven%20Package%20Management%20with%20VSTS%20and%20Jenkins.md) **OR**
     1. [Maven Package Management with VSTS Team Build](Maven%20Package%20Management%20with%20VSTS%20Team%20Build.md)
