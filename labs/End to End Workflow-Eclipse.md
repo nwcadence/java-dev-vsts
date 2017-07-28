@@ -127,7 +127,7 @@ In this task you will create a branch of the code to fix the Bug. You will then 
 
     ![Link the new branch to the work item](images/e2e-eclipse/linkbranch.png "Link the new branch to the work item")
 
-1. In the project view, browse to src/main/java/com.microsoft.example.servlet and open the LoginServlet class.
+1. Return to Eclipse. In the project view, browse to src/main/java/com.microsoft.example.servlet and open the LoginServlet class.
 
 1. Around line 35, you will see what is causing the bug: the `totalDriverFee` is being calculated but the `driverFeeTotal` session attribute is being set to `totalFareForDriver` (this looks like a classic copy/paste error).
 
