@@ -96,7 +96,14 @@ Fix the Bug
 In this task you will create a branch of the code to fix the Bug. You will then checkout the branch, fix the bug and commit the code. You will then create a Pull Request to merge the fix into master and see that this triggers the CI/CD pipeline to automatically deploy the fix to the dev environment.
 
 1. Open Eclipse if it is not already open. Open the MyShuttle2 project.
-1. In Team Explorer change the drop down to "Work Items", run a query to find the bug. You should see the bug.
+
+1. In Team Explorer change the drop down to "Work Items".  If the dropdown does not show work items connect to your VSTS account via the Team Explorer Home page.
+
+1. If there are no queries saved in VSTS, a query can be created in Eclipse (but not saved at this time).
+
+    ![New query](images/e2e-eclipse/newquery.png "New query")
+
+1. Run an existing query by double clicking it to find the bug. Right click to run a new query. The output of the query will show the bug.
 
     ![Confirm the bug is correctly assigned and in VSTS](images/e2e-eclipse/findbug.png "Confirm the bug is correctly assigned and in VSTS")
 
@@ -110,7 +117,15 @@ In this task you will create a branch of the code to fix the Bug. You will then 
 
     ![New branch](images/e2e-eclipse/createbranch2.png "New branch")
 
-1. The branch is created both locally and in the remote (on VSTS).
+1. The branch is created locally, push to VSTS to create the branch remotely.
+
+1. Switch to VSTS to associate the new branch with the work item.  Open the backlog for the project.
+
+    ![Show VSTS Backlog](images/e2e-eclipse/backlog.png "Show VSTS Backlog")
+
+1. Add a link to the work item and selected the newly created branch.
+
+    ![Link the new branch to the work item](images/e2e-eclipse/backlog.png "Link the new branch to the work item")
 
 1. In the project view, browse to src/main/java/com.microsoft.example.servlet and open the LoginServlet class.
 
