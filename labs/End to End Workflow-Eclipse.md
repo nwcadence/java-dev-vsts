@@ -125,7 +125,7 @@ In this task you will create a branch of the code to fix the Bug. You will then 
 
 1. Add a link to the work item and selected the newly created branch.
 
-    ![Link the new branch to the work item](images/e2e-eclipse/backlog.png "Link the new branch to the work item")
+    ![Link the new branch to the work item](images/e2e-eclipse/linkbranch.png "Link the new branch to the work item")
 
 1. In the project view, browse to src/main/java/com.microsoft.example.servlet and open the LoginServlet class.
 
