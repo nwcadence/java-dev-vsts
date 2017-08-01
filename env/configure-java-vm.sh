@@ -70,6 +70,7 @@ cp -r /mnt/java-dev-vsts/env/config-template/* /home/$username/.config
 find /home/$username/.config -type f -exec sed -i "s/__USERNAME__/$username/g" {} +
 chown -R $username /home/$username/.config/*
 
+
 ### Compile new version of xrdp
 ### Modified version of install-xrdp-1.8.sh from http://www.c-nergy.be/blog
 ################################################################
@@ -84,7 +85,7 @@ chown -R $username /home/$username/.config/*
 # Disclaimer : Script provided AS IS. Use it at your own risk....
 #
 ##################################################################
- 
+
 #Step 1 - Install prereqs for compilation
 ##################################################################
  
@@ -92,10 +93,28 @@ echo "Installing prereqs for compiling xrdp..."
 echo "----------------------------------------"
 apt-get -y install libx11-dev libxfixes-dev libssl-dev libpam0g-dev libtool libjpeg-dev flex bison gettext autoconf libxml-parser-perl libfuse-dev xsltproc libxrandr-dev python-libxml2 nasm xserver-xorg-dev fuse git pkg-config
 
+
+#********
+#Temporary fix for xrdp compilation issue due to Ubuntu package missing fontutil.h
+#********
+#https://github.com/neutrinolabs/xorgxrdp/issues/100
+#https://bugs.launchpad.net/ubuntu/+source/libxfont/+bug/1707691
+##################################################################
+if test -s "/usr/include/X11/fonts/fontutil.h"
+then
+    echo "fontutil.h already exists...issue is fixed and workaround is no longer necessary"
+else
+    echo "fontutil.h missing...copying from repo"
+    cp /mnt/java-dev-vsts/env/tempXrdpFix/fontutil.h /usr/include/X11/fonts/fontutil.h
+fi
+#********
+#End temporary fix for xrdp compilation issue due to Ubuntu package missing fontutil.h
+#********
+
+
 #Step 2 - Obtain xrdp packages 
 ################################################################## 
 
- 
 ## --Go to your Download folder
 echo "Moving to the ~/Download folders..."
 echo "-----------------------------------"
