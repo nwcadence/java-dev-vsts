@@ -1,29 +1,7 @@
 ## IntelliJ - Working with Git
 
-In this exercise, you are going to clone a Github repo into VSTS and then open it in your VM for editing in IntelliJ.
-This exercise assumes you have completed Exercise 1, and have created a Team Project that uses Git for version control. This exercise uses a team project named **jdev**, though your team project name may differ.
-
-> **Note**: It is not necessary to clone GitHub repos into VSTS. VSTS will work just fine with GitHub (or other Git hosted) repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
-
-Importing a GitHub Repo into VSTS
----------------------------------
-
-In this task you will import code from a GitHub repo into VSTS.
-
-1. Connect to the virtual machine with the user credentials which you specified when creating the VM in Azure.
-1. Open Chrome and browse to `http://<youraccount>.visualstudio.com` (where `youraccount` is the account you created in VSTS).
-1. Click on the `jdev` team project to navigate to it. Click on Code in the blue toolbar at the top to open the Code Hub.
-1. Click on the repo drop-down in the upper left (in the grey toolbar) and select "New repository".
-
-    ![Import a repository in the Code Hub](images/intellij-git/import-repo.png "Import a repository in the Code Hub")
-
-1. Enter the following url: `https://github.com/nwcadence/MyShuttle2.git` and click Import.
-
-    ![Enter the URL](images/intellij-git/import-repo-url.png "Enter the URL")
-
-1. After a few moments, the code will be imported.
-
-1. Click "Save"
+In this exercise, you are going to open the MyShuttle2 repo from your VSTS account in your VM for editing in IntelliJ.
+This exercise assumes you have completed Exercise 1, have created a Team Project that uses Git for version control, and imported the MyShuttle2 GitHub repo into your team project. This exercise uses a team project named **jdev**, though your team project name may differ.
 
 Connect to VSTS from IntelliJ
 -----------------------------
