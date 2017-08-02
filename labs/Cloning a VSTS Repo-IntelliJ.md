@@ -34,6 +34,9 @@ Connect to VSTS from IntelliJ
 
     ![Sign in to VSTS](images/intellij-git/intellij-vsts-signin.png "Sign in to VSTS")
 
+Clone MyShuttle2 from VSTS with IntelliJ
+-----------------------------
+
 1. Once you have authenticated, enter "MyShuttle2" into the search bar and select the MyShuttle2 repo from your team project. Click the Clone button to clone the repo to the VM.
 
     ![Select the VSTS repo](images/intellij-git/intellij-select-repo.png "Select the VSTS repo")
@@ -59,3 +62,22 @@ Connect to VSTS from IntelliJ
     ![Select the SDK folder](images/intellij-git/intellij-select-sdk.png "Select the SDK folder")
 
 > **Note**: The project will not currently compile, since it has a dependency on a library (MyShuttleCalc) that it cannot resolve. You will fix this in the Package Management lab.
+
+Clone MyShuttleCalc from VSTS with IntelliJ
+-----------------------------
+
+1. While the MyShuttle2 project is open in IntelliJ, in the toolbar at the top of IntelliJ, select File -> New -> Project from Version Control -> Team Services Git. 
+
+    ![New Team Services Git project](images/intellij-git/intellij-new-myshuttlecalc-project.png "New Team Services Git project")
+    
+1. Enter "MyShuttleCalc" into the search bar and select the MyShuttleCalc repo from your team project. Click the Clone button to clone the repo to the VM.
+    
+    ![Clone the MyShuttleCalc repo](images/intellij-git/intellij-clone-myshuttlecalc.png "Clone the MyShuttleCalc repo")
+    
+1. IntelliJ will prompt to open the project in the same or a new window. Choose "New Window" to open another instance of IntelliJ with the MyShuttleCalc project. 
+
+    ![New window](images/intellij-git/intellij-new-window.png "New window")
+
+1. IntelliJ should open in a new instance with the project loaded. 
+
+    ![MyShuttleCalc](images/intellij-git/intellij-myshuttlecalc.png "MyShuttleCalc")

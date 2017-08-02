@@ -169,14 +169,28 @@ In this task you will import code from a Github repo into VSTS.
 
 1. Enter the following url: `https://github.com/nwcadence/MyShuttle2.git` and click Import.
 
-    ![Enter the URL](images/project/import-repo-url.png "Enter the URL")
+    ![Enter the URL](images/project/import-myshuttle2-url.png "Enter the URL")
 
 1. After a few moments, the code will be imported.
+
+Importing the MyShuttleCalc code from Github into VSTS
+------------------------------------------------------
+
+In this task you will import the MyShuttleCalc code from Github into VSTS. If you have already done so, skip this step.
+
+1. Click on the `jdev` team project to navigate to it. Click on Code in the blue toolbar at the top to open the Code Hub.
+1. Click on the repo drop-down in the upper left (in the grey toolbar) and select "New repository".
+
+    ![Import a repository in the Code Hub](images/project/import-repo.png "Import a repository in the Code Hub")
+
+1. Enter the following url: `https://github.com/nwcadence/MyShuttleCalc.git` and click Import.
+
+    ![Enter the URL](images/project/import-myshuttlecalc-url.png "Enter the URL")
+
+1. After a few moments, the code will be imported.
+
+> **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hoster) repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
 
 Now you’re going to manage your backlog with Visual Studio Team
 Services. You can read more about account creation and more at
 [https://www.visualstudio.com/en-us/docs/setup-admin/team-services/connect-to-visual-studio-team-services](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/connect-to-visual-studio-team-services)
-
-> **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hoster) repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
-
-

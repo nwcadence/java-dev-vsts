@@ -64,6 +64,9 @@ Connect to VSTS from Eclipse
 
     ![Sign in to VSTS](images/eclipse-git/eclipse-tfslist.png "Sign in to VSTS")
 
+Clone MyShuttle2 from VSTS with Eclipse
+-----------------------------
+
 1. Once you have authenticated, click the "Next" button in the "Add Existing Team Project Window" to view team projects in VSTS.
 
     ![Select the VSTS repo](images/eclipse-git/eclipse-add-existingteamproject.png "Select the VSTS repo")
@@ -101,3 +104,38 @@ Connect to VSTS from Eclipse
     ![MyShuttle project](images/eclipse-git/eclipse-myshuttle.png "MyShuttle project")
 
 > **Note**: The project will not currently compile and there may be build errors temporarily, since it has a dependency on a library (MyShuttleCalc) that it cannot resolve. You will fix this in the Package Management lab.
+
+Clone MyShuttleCalc from VSTS with Eclipse
+-----------------------------
+
+1. Repeat cloning a repository for MyShuttleCalc.
+
+1. In the Team Explorer Everywhere panel, choose the "Git Repositories" panel, then select the MyShuttleCalc repo in the team project and right-click the repo and select "Import Repository."  
+
+    ![Select the VSTS repo](images/eclipse-git/eclipse-select-repo.png "Select the VSTS repo")
+
+    ![Select the VSTS repo](images/eclipse-git/eclipse-import-myshuttlecalc.png "Select the VSTS repo")
+
+    Leave the defaults for the parent directory and repo folder name, then press the next button. This will clone the repo onto the VM.  
+
+    ![Select the VSTS repo](images/eclipse-git/eclipse-select-myshuttlecalc.png "Select the VSTS repo")
+
+    In the "Import Projects from Team Foundation Server" window, click the cancel button. We will instead import the project as a Maven project instead of Eclipse project. 
+
+    ![Select the VSTS repo](images/eclipse-git/eclipse-importprojects2.png "Select the VSTS repo")
+
+1. In Eclipse, navigate to File -> Import... to open the "Import" window.
+
+    ![Import the Maven project](images/eclipse-git/eclipse-import.png "Import the Maven project")
+
+1. In the Import window, expand the Maven folder and choose "Existing Maven projects." Then press the Next button. 
+
+    ![Import the Maven project](images/eclipse-git/eclipse-import-existingmavenprojects.png "Import the Maven project")
+
+    For the root directory, click on the Browse button or type in the root directory path of /home/vmadmin/MyShuttleCalc. The pom.xml file should appear under projects to indicate the Maven project. Additionally, click the checkbox next to "Add project(s) to working set" to add myshuttle to the working set to access in the Package Explorer window as a separate project. Then click the Finish button. 
+
+    ![Import the Maven project](images/eclipse-git/eclipse-select-mavenproject2.png "Import the Maven project")
+
+    1. Click on Window -> Show View -> Package Explorer in the toolbar at the top of Eclipse to view the myshuttle project in Eclipse in Package Explorer. You may have to minimize other windows to view the Package Explorer view cleanly. 
+
+    ![MyShuttleCalc project](images/eclipse-git/eclipse-myshuttlecalc.png "MyShuttleCalc project")

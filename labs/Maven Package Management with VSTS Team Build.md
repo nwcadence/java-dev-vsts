@@ -1,30 +1,10 @@
 ## Maven Package Management with Visual Studio Team Services
 
-In this exercise, you are going to clone a Github repo into VSTS. This repo contains a class library (MyShuttleCalc) that is used by the MyShuttle2 application. You will configure a VSTS build to publish the MyShuttleCalc package to a VSTS Maven Package feed so that it can be consumed by MyShuttle2 and any other applications that require the calculation code.
+In this exercise, you are going to set up package management with Maven in VSTS. This repo contains a class library (MyShuttleCalc) that is used by the MyShuttle2 application. You will configure a VSTS build to publish the MyShuttleCalc package to a VSTS Maven Package feed so that it can be consumed by MyShuttle2 and any other applications that require the calculation code.
 
-This exercise assumes you have completed the exercises to create a Team Project and have set up the Docker private VSTS agent. This exercise uses a team project named **jdev**, though your team project name may differ.
+This exercise assumes you have completed the exercises to create a Team Project, have set up the Docker private VSTS agent, and imported the MyShuttleCalc and MyShuttle2 GitHub repos into your VSTS team project. This exercise also assumes that you have cloned the repos in either IntelliJ or Eclipse. This exercise uses a team project named **jdev**, though your team project name may differ.
 
-> **Note**: It is not necessary to clone Github repos into VSTS. VSTS will work just fine with Github (or other Git hosted)  repos. However, some linkages from source code to other aspects of the DevOps pipeline (such as work items, builds or releases) work best if the code is in VSTS.
-
-> **Note**: This exercise shows how to do a Maven build using just VSTS. To see how to perform a Maven build using Jenkins that still integrates into the VSTS Package Feed, please refer to [Maven Package Management with VSTS Team Build](./Maven Package Management with VSTS Team Build,md).
-
-Importing the MyShuttleCalc code from Github into VSTS
-------------------------------------------------------
-
-In this task you will import the MyShuttleCalc code from Github into VSTS. If you have already done so, skip this step.
-
-1. Connect to the virtual machine with the user credentials which you specified when creating the VM in Azure.
-1. Open Chrome and browse to `http://<youraccount>.visualstudio.com` (where `youraccount` is the account you created in VSTS).
-1. Click on the `jdev` team project to navigate to it. Click on Code in the blue toolbar at the top to open the Code Hub.
-1. Click on the repo drop-down in the upper left (in the grey toolbar) and select "New repository".
-
-    ![Import a repository in the Code Hub](images/packagemanagement/import-repo.png "Import a repository in the Code Hub")
-
-1. Enter the following url: `https://github.com/nwcadence/MyShuttleCalc.git` and click Import.
-
-    ![Enter the URL](images/packagemanagement/import-repo-url.png "Enter the URL")
-
-1. After a few moments, the code will be imported.
+> **Note**: This exercise shows how to do a Maven build using just VSTS. To see how to perform a Maven build using Jenkins that still integrates into the VSTS Package Feed, please refer to [Maven Package Management with VSTS Team Build](./Maven Package Management with VSTS Team Build.md).
 
 Create a Maven Package Feed
 ---------------------------
@@ -40,47 +20,6 @@ In this task you will create a Maven package feed. You will publish packages to 
     ![Create the new feed](images/packagemanagement/vsts-new-feed.png "Create the new feed")
 
 You now have a feed that you can publish package to.
-
-Clone the MyShuttleCalc repo - Choose IntelliJ or Eclipse Path
-----------------------------
-In this task you will clone the MyShuttleCalc repo. This repo contains a Maven package settings file that you will need to authenticate to the Maven feed. If you have already done so, skip this step.
-- IntelliJ Path    
-    1. Click on the IntelliJ icon in the toolbar to open IntellJ IDEA.
-    
-        ![Click IntelliJ in the Toolbar](images/packagemanagement/click-intellij.png "Click IntelliJ in     the Toolbar")
-    
-    1. Click "Check out from Version Control" and select "Team Services Git".
-    
-        ![Checkout from Team Services Git](images/packagemanagement/intellij-open-from-vsts.png     "Checkout from Team Services Git")
-    
-        > **Note**: (If you have a project open, then you can also click File->New->Project from     Version Control->Team Services Git)
-    
-    1. Click on "Sign in..." to sign in to your VSTS account.
-    
-        ![Sign in to VSTS](images/packagemanagement/intellij-vsts-signin.png "Sign in to VSTS")
-    
-    1. Once you have authenticated, enter "MyShuttleCalc" into the search bar and select the     MyShuttleCalc repo from your team project. Click the Clone button to clone the repo to the VM.
-    
-        ![Select the VSTS repo](images/packagemanagement/intellij-select-repo.png "Select the VSTS     repo")
-    
-    1. IntelliJ detects a Maven project file (pom.xml) and asks if you want to open it. Click "Yes" to     open the project.
-
-- Eclipse Path    
-    1. Click on the Eclipse icon in the toolbar to open the Eclipse Java IDE.
-    
-        ![Click Eclipse in the Toolbar](images/packagemanagement/click-eclipse.png "Click Eclipse in     the Toolbar")
-    
-    1. Click on "Connect to Team Services ..." to sign in to your VSTS account.
-
-        ![Sign in to VSTS](images/eclipse-git/eclipse-vsts-signin.png "Sign in to VSTS")
-
-        ![Sign in to VSTS](images/eclipse-git/browsevsts.png "Sign in to VSTS")
-
-    1. Once you have authenticated, choose Git Repositories from the Welcome (or Home) screen, find "MyShuttleCalc" and select the MyShuttleCalc repo from your team project. Right click on any repository and select Import Repository.
-    
-        ![Checkout from Team Services Git](images/packagemanagement/eclipse-select-repo.png     "Checkout from Team Services Git")
-    
-        ![Checkout from Team Services Git](images/packagemanagement/eclipse-select-repo2.png     "Checkout from Team Services Git")
     
 Create a Maven Settings File with the Feed Credentials
 ------------------------------------------------------
@@ -116,7 +55,6 @@ In this task you will create credentials for the Maven feed. You will then creat
 
 1. Commit your changes to the repo.
     > **Note**: If this is your first commit to VSTS, you will be prompted to update your display name and email address for the repo. These are simply for display purposes, but usually are matched to your VSTS profile.
-
     
     IntelliJ
     - Click VCS->Commit Changes to commit your changes to the repo.
