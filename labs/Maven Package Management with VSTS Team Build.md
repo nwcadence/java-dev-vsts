@@ -85,13 +85,13 @@ In this task you will create credentials for the Maven feed. You will then creat
         
         ![Login to Eclipse](images/packagemanagement/eclipse-login.png "Login to Eclipse")
 
-1. Important: Copy the maven settings file to the .m2 directory so that local Maven operations will succeed by running the following command in a terminal:
+1. **Important**: Copy the maven settings file to the .m2 directory so that local Maven operations will succeed by running the following command in a terminal:
 
     ```sh
     cp ~/MyShuttleCalc/maven/settings.xml ~/.m2/
     ```
 
-1. If you have the MyShuttle2 project already open in IntelliJ or Eclipse, close the instance of the IDE and reopen it. 
+1. **Important**: If you have the MyShuttle2 project already open in IntelliJ or Eclipse, close the instance of the IDE and reopen it. 
 
 Creating a VSTS Build for Publishing a Maven Package
 ----------------------------------------------------
