@@ -65,19 +65,8 @@ In this task you will create credentials for the Maven feed. You will then creat
     - Click the drop-down next to the Commit button and select "Commit and Push".
 
     Eclipse
-    - Navigate to your VSTS account in a web browser, and under the dropdown on your account profile photo, click on "Security."
-
-       ![Navigate to security](images/packagemanagement/vsts-security.png "Navigate to security") 
-
-    - In the Personal access tokens tab on the left, click on the "Add" button in the personal access tokens panel. 
-
-        ![Add personal access token](images/packagemanagement/vsts-add-pat.png "Add personal access token") 
     
-    - In the "Create a personal access token" panel, give the PAT a description (such as "Eclipse" or "Git") to the appropriate VSTS account then click the "Create Token" button at the bottom of the panel. 
-
-        ![Add personal access token](images/packagemanagement/vsts-create-pat.png "Add personal access token")
-
-    - Copy the value of the PAT and paste it into a text editor or somewhere you can access it for later.
+    >Note: Use the personal access token (PAT) generated from the "Set up a Docker Build" lab that should be located at: `home/vmadmin/pat.txt`. Otherwise, follow the instructions from that lab again to generate a new PAT.
 
     - In Eclipse, right click on the project or the pom.xml file and select Team->Commit.
     
@@ -92,7 +81,7 @@ In this task you will create credentials for the Maven feed. You will then creat
         | Name | Value |
         |---|---|
         | User | `_VSTS_Code_Access_Token` |
-        | Password | `{PAT that you copied earlier} |
+        | Password | `{PAT that you copied earlier}` |
         
         ![Login to Eclipse](images/packagemanagement/eclipse-login.png "Login to Eclipse")
 

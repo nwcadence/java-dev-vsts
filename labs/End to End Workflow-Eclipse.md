@@ -4,23 +4,6 @@ In this exercise, you are going to see a typical end-to-end workflow for a Java 
 
 This exercise assumes you have completed the exercises to create a Team Project and have set up the Docker private VSTS agent. You should also have completed the labs to set up an automated build for both the MyShuttleCalc and the MyShuttle2 repos. You should also have complete the release management lab. This exercise uses a team project named **jdev**, though your team project name may differ.
 
-Create a Personal Access Token
-------------------------------
-
-1. Navigate to your VSTS account in a web browser, and under the dropdown on your account profile photo, click on "Security."
-
-    ![Navigate to security](images/packagemanagement/vsts-security.png "Navigate to security") 
-
-1. In the Personal access tokens tab on the left, click on the "Add" button in the personal access tokens panel. 
-
-    ![Add personal access token](images/packagemanagement/vsts-add-pat.png "Add personal access token") 
-    
-1. In the "Create a personal access token" panel, give the PAT a description (such as "Eclipse" or "Git") to the appropriate VSTS account then click the "Create Token" button at the bottom of the panel. 
-
-    ![Add personal access token](images/packagemanagement/vsts-create-pat.png "Add personal access token")
-
-1. Copy the value of the PAT and paste it into a text editor or somewhere you can access it for later.
-
 Install the Exploratory Testing Extension for Chrome
 ----------------------------------------------------
 In this task you will install the [Exploratory Testing extension](https://marketplace.visualstudio.com/items?itemName=ms.vss-exploratorytesting-web) into Chrome.
@@ -112,6 +95,8 @@ Fix the Bug
 -----------
 In this task you will create a branch of the code to fix the Bug. You will then checkout the branch, fix the bug and commit the code. You will then create a Pull Request to merge the fix into master and see that this triggers the CI/CD pipeline to automatically deploy the fix to the dev environment.
 
+>Note: Use the personal access token (PAT) generated from the "Set up a Docker Build" lab that should be located at: `home/vmadmin/pat.txt`. Otherwise, follow the instructions from that lab again to generate a new PAT. 
+
 1. Open Eclipse if it is not already open. Open the MyShuttle2 project.
 
 1. In Team Explorer change the drop down to "Work Items".  If the dropdown does not show work items connect to your VSTS account via the Team Explorer Home page.
@@ -157,7 +142,7 @@ In this task you will create a branch of the code to fix the Bug. You will then 
     | Name | Value |
     |---|---|
     | User | `_VSTS_Code_Access_Token` |
-    | Password | `{PAT that you copied earlier} |
+    | Password | `{PAT that you copied earlier}` |
         
     ![Login to Eclipse](images/packagemanagement/eclipse-login.png "Login to Eclipse")
 
