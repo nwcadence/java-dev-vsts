@@ -32,29 +32,54 @@ In this task you will update the pom.xml file for the MyShuttle2 application so 
 
     ![Get the package repository settings from VSTS](images/vsts-build-docker/maven-packagefeed-settings.png "Get the package repository settings from VSTS")
 
-1. Open IntelliJ by clicking on the IntelliJ icon in the toolbar.
-
-    ![Open IntelliJ](images/vsts-build-docker/click-intellij.png "Open IntelliJ")
-
 1. Open the MyShuttle2 project.
 1. Click on the pom.xml file.
 1. In the `<repositories>` element there is a reference to a Maven repo. Paste in the repository settings you got from VSTS.
-1. Find the `<dependency>` with `<groupId>com.microsoft.exampledep</groupId>` and update the version number to match the version number of the MyShuttleCalc package in your package feed.
+1. Find the `<dependency>` with `<groupId>com.microsoft.exampledep</groupId>` and update the version number to match the version number of the MyShuttleCalc package in your package feed. This may look something like:
 
-1. You may have to reload the Maven project to update the plugins and dependencies. You can do this by clicking `View->Tool Windows->Maven` and then clicking the reload button (the top-left icon in the Maven project view).
+    ```
+    ...
+    <dependency>
+      <groupId>com.microsoft.exampledep</groupId>
+      <artifactId>MyShuttleCalc</artifactId>
+      <version>1.0.6</version>
+	</dependency>
+    ...
+    ```
 
-    ![Refresh Maven](images/vsts-build-docker/reload-maven.png "Refresh Maven")
-
-1. Click Build->Build Project and make sure there are no errors.
 1. Copy the maven settings file from the MyShuttleCalc project (you updated this file in another lab to include the authentication settings for the Maven package feed). Run the following command in a terminal:
 
     ```sh
     cp ~/MyShuttleCalc/maven/settings.xml ~/MyShuttle2/maven/
     ```
 
+- IntelliJ
+1. You may have to reload the Maven project to update the plugins and dependencies. You can do this by clicking `View->Tool Windows->Maven` and then clicking the reload button (the top-left icon in the Maven project view).
+
+    ![Refresh Maven](images/vsts-build-docker/reload-maven.png "Refresh Maven")
+
+1. From the top toolbar of IntelliJ, click Build->Build Project and make sure there are no errors.
+
 1. Click VCS->Commit. Add a commit message "Updating feed settings". Click the drop-down on the Commit button and select Commit and Push. Click Push on the prompt.
 
     ![Commit the changes to the pom.xml file](images/vsts-build-docker/commit-changes.png "Commit the changes to the pom.xml file")
+
+- Eclipse
+1. You may have to reload the Maven project to update the plugins and dependencies. You can do this by right-clicking on the `myshuttle` working set/project, then selecting Maven -> Update Project. Then, keep the checkbox for `myshuttle` checked and press the OK button. 
+
+    ![Refresh Maven](images/vsts-build-docker/eclipse-update-project.png "Refresh Maven")
+
+1. Right-click on the `myshuttle` working set/project, then select Run As -> Maven build. 
+
+    ![Build Maven](images/vsts-build-docker/eclipse-maven-build.png "Build Maven")
+
+    In the configuration window, type in "compile" as the Maven Goal then press the Run button. 
+
+    ![Build Maven](images/vsts-build-docker/eclipse-maven-configuration.png "Build Maven")
+
+>Note: Ensure that you have already copied the settings.xml file from MyShuttleCalc to the .m2 folder before you run this. Otherwise, you can specify the settings.xml file in MyShuttle2 by clicking on the "File System..." button to the right of the User settings field in the configuration window to reference a settings file other than in the default .m2 folder. 
+
+1. Commit and push your changes through Team Explorer Everywhere. 
 
 Create a VSTS Build to Build Docker Images
 ------------------------------------------

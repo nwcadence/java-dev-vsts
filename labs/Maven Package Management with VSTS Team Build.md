@@ -4,7 +4,7 @@ In this exercise, you are going to set up package management with Maven in VSTS.
 
 This exercise assumes you have completed the exercises to create a Team Project, have set up the Docker private VSTS agent, and imported the MyShuttleCalc and MyShuttle2 GitHub repos into your VSTS team project. This exercise also assumes that you have cloned the repos in either IntelliJ or Eclipse. This exercise uses a team project named **jdev**, though your team project name may differ.
 
-> **Note**: This exercise shows how to do a Maven build using just VSTS. To see how to perform a Maven build using Jenkins that still integrates into the VSTS Package Feed, please refer to [Maven Package Management with VSTS Team Build](./Maven Package Management with VSTS Team Build.md).
+> **Note**: This exercise shows how to do a Maven build using just VSTS. To see how to perform a Maven build using Jenkins that still integrates into the VSTS Package Feed, please refer to the Maven Package Management with VSTS Team Build lab.
 
 Create a Maven Package Feed
 ---------------------------
@@ -65,18 +65,44 @@ In this task you will create credentials for the Maven feed. You will then creat
     - Click the drop-down next to the Commit button and select "Commit and Push".
 
     Eclipse
-    - Right Click pom.xml->Team->Commit.
+    - Navigate to your VSTS account in a web browser, and under the dropdown on your account profile photo, click on "Security."
 
-        ![Commit changes](images/packagemanagement/vcs-commit-eclipse.png "Commit changes")
+       ![Navigate to security](images/packagemanagement/vsts-security.png "Navigate to security") 
+
+    - In the Personal access tokens tab on the left, click on the "Add" button in the personal access tokens panel. 
+
+        ![Add personal access token](images/packagemanagement/vsts-add-pat.png "Add personal access token") 
+    
+    - In the "Create a personal access token" panel, give the PAT a description (such as "Eclipse" or "Git") to the appropriate VSTS account then click the "Create Token" button at the bottom of the panel. 
+
+        ![Add personal access token](images/packagemanagement/vsts-create-pat.png "Add personal access token")
+
+    - Copy the value of the PAT and paste it into a text editor or somewhere you can access it for later.
+
+    - In Eclipse, right click on the project or the pom.xml file and select Team->Commit.
     
     - Enter "Adding maven credentials" to the commit message.
-    - Click "Commit and Push".
 
-1. Copy the maven settings file to the .m2 directory so that local Maven operations will succeed by running the following command in a terminal:
+    - Click the "Commit and Push" button.
 
-```sh
-cp ~/MyShuttleCalc/maven/settings.xml ~/.m2/
-```
+    - Verify that the correct remote is being pushed to, then click the "Next" button. 
+
+    - If a window pops up that prompts for credentials, use the following values: 
+
+        | Name | Value |
+        |---|---|
+        | User | `_VSTS_Code_Access_Token` |
+        | Password | `{PAT that you copied earlier} |
+        
+        ![Login to Eclipse](images/packagemanagement/eclipse-login.png "Login to Eclipse")
+
+1. Important: Copy the maven settings file to the .m2 directory so that local Maven operations will succeed by running the following command in a terminal:
+
+    ```sh
+    cp ~/MyShuttleCalc/maven/settings.xml ~/.m2/
+    ```
+
+1. If you have the MyShuttle2 project already open in IntelliJ or Eclipse, close the instance of the IDE and reopen it. 
 
 Creating a VSTS Build for Publishing a Maven Package
 ----------------------------------------------------

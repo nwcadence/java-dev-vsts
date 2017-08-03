@@ -10,7 +10,7 @@ This exercise assumes you have completed the exercises to create a Team Project,
 
 > **Note**: Port 8080 is not open on the Azure VM for security purposes. However, since a local agent is running in Docker on the VM, it will be able to build and interact with VSTS anyway. 
 
-Clone the Repo and Configure Package Management
+Configure Package Management
 -----------------------------------------------
 
 Before getting to the build, you will need to create the Maven Package Feed and then update the Maven settings file in the project to specify where to publish the package to. All these instructions are in the [Maven Package Management with VSTS Team Build](./Maven%20Package%20Management%20with%20VSTS%20Team%20Build.md). Please complete the following exercises from that lab:
