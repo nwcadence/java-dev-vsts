@@ -4,7 +4,9 @@
 
 These hands on labs allow you to explore how VSTS works in a Linux environment with [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx), [Eclipse](https://eclipse.org/downloads/) and [Team Explorer Everywhere](https://www.visualstudio.com/en-us/products/team-explorer-everywhere-vs.aspx). This combination of tools and technologies allows you to leverage the Microsoft DevOps platform for Java development. 
 
-The [labs](labs/readme.md) use a pre-built virtual machine image that is preconfigured with all the software you require to run through the labs.  To use the labs, you will run a copy of this image in your own Azure subscription.
+The [labs](labs/readme.md) use an Azure Resource Management (ARM) template to dynamically spin up a virtual machine in a selected Azure subscription with the latest versions of the software used in the labs. 
+
+If you find any issues, please [open a new issue in the GitHub repo](https://github.com/nwcadence/java-dev-vsts/issues). If you fix any issues, please [submit a pull request in the GitHub repo](https://github.com/nwcadence/java-dev-vsts/pulls). 
 
 > We've recorded some short videos that intro each lab. Check out this [playlist on YouTube](https://youtu.be/O1UTj-wZr3k?list=PLu1D89Nlvq9hUaf-wdBXVcKfQiqY7Y0AI).
 
@@ -49,3 +51,10 @@ If accessing the VM from a Windows machine, paste in the IP address/DNS name int
 <img src ="images/rdp-connect-vm.png">
 
 In the RDP session, you will need to put your credentials set earlier to log into the machine. 
+
+## Troubleshooting
+
+If you see the older xrdp client when logging onto the virtual machine for the first time (see below image), restart the virtual machine through the Azure portal to apply the recent configuration updates from the ARM template deployment. A newer client should appear to log into.  
+
+<img src ="images/xrdp.png">
+

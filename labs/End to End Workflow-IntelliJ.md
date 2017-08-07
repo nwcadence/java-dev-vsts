@@ -10,7 +10,7 @@ In this task you will install the [Exploratory Testing extension](https://market
 
 1. Open chrome and navigate to `https://chrome.google.com/webstore`. Enter "exploratory testing" into the search box. Find the "Test & Feedback" extension from Microsoft Corporation and click "Add to Chrome". Click Install in the dialog.
 
-    ![Adding the Exploratory Test Exteions to Chrome](images/e2e-intellij/add-ext.png "Adding the Exploratory Test Exteions to Chrome")
+    ![Adding the Exploratory Test Extension to Chrome](images/e2e-intellij/add-ext.png "Adding the Exploratory Test Extension to Chrome")
 
 1. Once installed, a beaker icon appears in the top right of the Chrome toolbar. Click it to open the UI.
 1. Click on the gear icon to open the settings. Select "Connected" and enter your VSTS account URL and click Next.
@@ -42,7 +42,7 @@ In this task you will enforce quality on the master branch by creating branch po
 
     ![Policy configuration](images/e2e-intellij/policy.png "Policy configuration")
 
-    > **Note**: You can enforce other policy options like comment resolution and minumum number of reviewers, as well as specify the merge options (like squashing). You can also add default reviewers.
+    > **Note**: You can enforce other policy options like comment resolution and minimum number of reviewers, as well as specify the merge options (like squashing). You can also add default reviewers.
 
 Log a Bug using the Exploratory Test Extension
 ----------------------------------------------
@@ -110,7 +110,7 @@ In this task you will create a branch of the code to fix the Bug. You will then 
 
     ![Notifications when creating a branch](images/e2e-intellij/branch-notifications.png "Notifications when creating a branch")
 
-1. In the project view, browse to serc/main/java/com.microsoft.example/servlet and open the LoginServlet class.
+1. In the project view, browse to src/main/java/com.microsoft.example/servlet and open the LoginServlet class.
 1. Around line 35, you will see what is causing the bug: the `totalDriverFee` is being calculated but the `driverFeeTotal` session attribute is being set to `totalFareForDriver` (this looks like a classic copy/paste error).
 
     Change this line of code:
