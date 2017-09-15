@@ -16,7 +16,8 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 **Tasks**
 
-1. Provision the VM and dependent resources
+1. Provision the VM and Dependent Resources
+2. Connect to the VM and Start the Labs
 
 ## Task 1: Provision the VM and Dependent Resources
 
@@ -35,7 +36,8 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 	The VM will take a few minutes (~20) to complete. The VM is installing required software and configuring the environment for the labs.
 
-## Start the Labs
+
+## Task 2: Connect to the VM and Start the Labs
 Once the VM has been provisioned, remote desktop to the machine and log in. You can then [start the labs](https://almvm.azurewebsites.net/labs/java/).
 
 1. Get the IP address/DNS name of the machine.
@@ -44,7 +46,7 @@ In the Azure portal, select the VM to view details about it in the Overview pane
 
 <img src ="images/azure-copy-ipaddress.png">
 
-1. Remote into the machine in Windows.
+2. Remote into the machine in Windows.
 
 If accessing the VM from a Windows machine, paste in the IP address/DNS name into a Remote Desktop Connection window followed by a colon and the 3389 port. This will allow you to view the GUI of the Linux VM desktop.
 
