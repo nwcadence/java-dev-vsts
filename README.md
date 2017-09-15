@@ -2,11 +2,11 @@
 
 ![](images/all_logo.png)
 
-These hands on labs allow you to explore how VSTS works in a Linux environment with [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx), [Eclipse](https://eclipse.org/downloads/) and [Team Explorer Everywhere](https://www.visualstudio.com/en-us/products/team-explorer-everywhere-vs.aspx). This combination of tools and technologies allows you to leverage the Microsoft DevOps platform for Java development. 
+These hands on labs allow you to explore how VSTS works in a Linux environment with [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx) with your choice of development IDE between [IntelliJ IDEA](https://www.jetbrains.com/idea/) with the [VSTS Plugin](https://java.visualstudio.com/Docs/tools/intelliJ) or [Eclipse](https://eclipse.org/downloads/) with [Team Explorer Everywhere](https://www.visualstudio.com/en-us/products/team-explorer-everywhere-vs.aspx). This combination of tools and technologies allows you to leverage the Microsoft DevOps platform for Java development. 
 
-The [labs](labs/readme.md) use an Azure Resource Management (ARM) template to dynamically spin up a virtual machine in a selected Azure subscription with the latest versions of the software used in the labs. 
+The [labs](https://almvm.azurewebsites.net/labs/java/) use an Azure Resource Management (ARM) template to dynamically spin up a virtual machine in a selected Azure subscription with the latest versions of the software used in the labs. 
 
-If you find any issues, please [open a new issue in the GitHub repo](https://github.com/nwcadence/java-dev-vsts/issues). If you fix any issues, please [submit a pull request in the GitHub repo](https://github.com/nwcadence/java-dev-vsts/pulls). 
+If you find any issues with the VM, please [open a new issue in the GitHub repo](https://github.com/nwcadence/java-dev-vsts/issues). If you fix any issues, please [submit a pull request in the GitHub repo](https://github.com/nwcadence/java-dev-vsts/pulls). 
 
 > We've recorded some short videos that intro each lab. Check out this [playlist on YouTube](https://youtu.be/O1UTj-wZr3k?list=PLu1D89Nlvq9hUaf-wdBXVcKfQiqY7Y0AI).
 
@@ -16,7 +16,8 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 **Tasks**
 
-1. Provision the VM and dependent resources
+1. Provision the VM and Dependent Resources
+2. Connect to the VM and Start the Labs
 
 ## Task 1: Provision the VM and Dependent Resources
 
@@ -35,8 +36,9 @@ If you require assistance with these labs, contact Northwest Cadence through our
 
 	The VM will take a few minutes (~20) to complete. The VM is installing required software and configuring the environment for the labs.
 
-## Start the Labs
-Once the VM has been provisioned, remote desktop to the machine and log in. You can then [start the labs](labs/readme.md).
+
+## Task 2: Connect to the VM and Start the Labs
+Once the VM has been provisioned, remote desktop to the machine and log in. You can then [start the labs](https://almvm.azurewebsites.net/labs/java/).
 
 1. Get the IP address/DNS name of the machine.
 
@@ -44,7 +46,7 @@ In the Azure portal, select the VM to view details about it in the Overview pane
 
 <img src ="images/azure-copy-ipaddress.png">
 
-1. Remote into the machine in Windows.
+2. Remote into the machine in Windows.
 
 If accessing the VM from a Windows machine, paste in the IP address/DNS name into a Remote Desktop Connection window followed by a colon and the 3389 port. This will allow you to view the GUI of the Linux VM desktop.
 
