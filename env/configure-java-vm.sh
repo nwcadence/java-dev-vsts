@@ -354,7 +354,7 @@ RUN apt-get update && apt-get install libfontconfig -y
 
 # configure docker
 COPY .docker /root/.docker/
-ENV DOCKER_HOST=tcp://$HOSTNAME:2376 DOCKER_TLS_VERIFY=1
+ENV DOCKER_HOST=tcp://$HOSTNAME:2376 DOCKER_TLS_VERIFY=1 DOCKER_CERT_PATH=/root/.docker
 EOF
 
 # build the image
