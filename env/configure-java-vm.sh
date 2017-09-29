@@ -350,7 +350,7 @@ RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM.tar.bz2 > $
   ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/share/phantomjs && \
   ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/local/bin/phantomjs && \
   ln -sf /usr/local/share/$PHANTOM/bin/phantomjs /usr/bin/phantomjs
-RUN apt-get update && apt-get install libfontconfig -y
+RUN apt-get update && apt-get install libfontconfig mysql-client -y
 
 # configure docker
 COPY .docker /root/.docker/
